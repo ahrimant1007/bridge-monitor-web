@@ -1,0 +1,5 @@
+export { CrudCMixin } from './crud_c_mixin'
+export { CrudRMixin } from './crud_r_mixin'
+export { CrudUMixin } from './crud_u_mixin'
+export { CrudFMixin } from './crud_f_mixin'
+export { CrudPMixin } from './crud_p_mixin'

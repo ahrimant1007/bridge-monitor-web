@@ -1,0 +1,29 @@
+.login-page-form {
+  background: rgba(10, 50, 90, .8);
+  width: 360px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  z-index: 2;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .5) inset;
+  .title {
+    font-size: 24px;
+    background: linear-gradient(0deg, rgba(113, 143, 155, 1) 16.943359375%, rgba(255, 255, 255, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .el-input-group__append, .el-input-group__prepend {
+    padding: 0 10px;
+  }
+  hr {
+    margin-bottom: 30px;
+  }
+  i {
+    font-size: 20px;
+  }
+}

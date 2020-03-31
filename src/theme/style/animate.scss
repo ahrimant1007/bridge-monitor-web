@@ -1,0 +1,51 @@
+.fade-in-right-d0 {
+  animation: fadeInRight .5s ease both;
+}
+
+.fade-in-right-d1 {
+  @extend .fade-in-right-d0;
+  animation-delay: .2s;
+}
+
+.fade-in-right-d2 {
+  @extend .fade-in-right-d0;
+  animation-delay: .4s;
+}
+
+.fade-in-right-d3 {
+  @extend .fade-in-right-d0;
+  animation-delay: .6s;
+}
+
+.fade-in-right-d4 {
+  @extend .fade-in-right-d0;
+  animation-delay: .8s;
+}
+
+.fade-in-right-d5 {
+  @extend .fade-in-right-d0;
+  animation-delay: 1s;
+}
+.fade-in-right-d6 {
+  @extend .fade-in-right-d0;
+  animation-delay: 1.2s;
+}
+.fade-in-right-d7 {
+  @extend .fade-in-right-d0;
+  animation-delay: 1.4s;
+}
+.fade-in-right-d8 {
+  @extend .fade-in-right-d0;
+  animation-delay: 1.6s;
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(50px)
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0)
+  }
+}
