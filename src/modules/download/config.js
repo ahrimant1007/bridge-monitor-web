@@ -33,7 +33,7 @@ export const warnConfig = configMaker({
         { value: '黄色预警', label: '黄色预警' },
       ]
     },
-    { value: '_', label: '报警时间', inSearch: true, type: TYPE_ENUM.DATE_RANGE, dateType: 'd' },
+    { value: '_', label: '报警时间', inSearch: true, type: TYPE_ENUM.DATE_RANGE, dateType: 'datetimerange' },
   ],
 })
 
@@ -46,7 +46,6 @@ export const effConfig = configMaker({
   columns: [
     { value: 'sensorId', label: '传感器编号' },
     { value: 'sensorNo', label: '传感器显示编号', inSearch: true },
-    { value: '_', label: '报警时间', inSearch: true, type: TYPE_ENUM.DATE_RANGE },
     {
       value: 'warningTime',
       label: '报警时间',
@@ -55,6 +54,14 @@ export const effConfig = configMaker({
     {
       value: 'warningValue',
       label: '报警值',
+    },
+    {
+      value: '_',
+      label: '报警时间',
+      notTable: true,
+      inSearch: true,
+      type: TYPE_ENUM.DATE_RANGE,
+      dateType: 'datetimerange'
     },
   ],
 })

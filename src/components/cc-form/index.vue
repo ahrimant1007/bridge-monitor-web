@@ -131,6 +131,11 @@
         required: false,
         default: null
       },
+      frontendKey:{
+        type: String,
+        required: false,
+        default: 'id'
+      },
       classname: {
         type: String,
         default: ''
@@ -188,7 +193,7 @@
       }
     },
     created() {
-      this.id = this.codeValue || this.$route.params.id
+      this.id = this.codeValue || this.$route.params[this.frontendKey]
       let submitFunc
       if (this.isEditForm) {
         this.getData()

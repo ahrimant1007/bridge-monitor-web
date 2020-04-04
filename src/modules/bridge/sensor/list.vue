@@ -1,11 +1,9 @@
 <template>
   <div class="parameter">
-    <c-searcher
-      :options="searchColumns"
-      @submitHandle="onSearch"
-    />
     <c-table
+      :code-key="codeKey"
       :columns="tableColumns"
+      :actions="actions"
       :frontend-url="frontendUrl"
       :service="service"
       :search-form="searchForm"
@@ -15,26 +13,21 @@
 <script>
   import { config } from './config'
   import CTable from '@/components/cc-table'
-  import CSearcher from '@/components/cc-searcher'
 
   export default {
-    name: 'Warn',
-    components: { CSearcher, CTable },
-    props: {
-      sensorId: {
-        type: String,
-        required: true,
-      }
-    },
+    name: 'Parameter',
+    components: { CTable },
     data() {
       return {
         ...config,
-        searchForm: {},
+        searchForm: {
+          bridgeId: this.$route.params.id
+        },
       }
     },
     methods: {
       onSearch(form = {}) {
-        this.searchForm = { ...(this.searchForm || {}), ...form, sensorId: this.sensorId }
+        this.searchForm = { ...(this.searchForm || {}), ...form }
       }
     }
   }

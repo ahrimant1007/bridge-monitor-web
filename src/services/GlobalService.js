@@ -130,7 +130,7 @@ export default class {
   o2formData(o = {}) {
     const formData = new FormData()
     Object.keys(o).forEach(key => {
-      const value = JSON.stringify(o[key])
+      const value = o[key] instanceof File ? o[key] : JSON.stringify(o[key])
       if (value || value === 0) {
         formData.append(key, value)
       }

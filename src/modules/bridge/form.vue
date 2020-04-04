@@ -29,7 +29,7 @@
             type="success"
             @click="uploadImage(true)"
           >
-            上传<i class="el-icon-upload el-icon--right"></i>
+            上传提交<i class="el-icon-upload el-icon--right"></i>
           </el-button>
           <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
         </el-upload>
@@ -58,7 +58,7 @@
             type="success"
             @click="uploadImage(false)"
           >
-            上传<i class="el-icon-upload el-icon--right"></i>
+            上传提交<i class="el-icon-upload el-icon--right"></i>
           </el-button>
           <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
         </el-upload>
@@ -122,7 +122,7 @@
         const { uploadImage, uploadPointImage } = this.service
         const uploadFunc = isImg ? uploadImage : uploadPointImage
         const img = isImg ? this.imgUrl : this.pointUrl
-        console.log(isImg)
+        console.log(isImg, img)
         const res = await uploadFunc(this.id, img)
         if (res) {
           this.$message.success('图片上传成功')

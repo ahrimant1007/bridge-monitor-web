@@ -2,6 +2,7 @@
   <div class="page form-page">
     <c-form
       :key-code="codeKey"
+      frontend-key="sid"
       :columns="formColumns"
       :service="service"
       :is-edit-form="isEditForm"
@@ -15,11 +16,12 @@
   export default {
     components: { CForm },
     data() {
-      console.log(this.$route.meta)
       return {
         ...config,
         isEditForm: this.$route.meta.formType === 'edit',
-        searchForm: {},
+        searchForm: {
+          bridgeId: this.$route.params.id
+        },
       }
     },
     methods: {

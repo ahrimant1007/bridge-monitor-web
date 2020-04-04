@@ -11,6 +11,7 @@
       :frontend-url="frontendUrl"
       :service="service"
       :search-form="searchForm"
+      @doOtherAction="otherActionHandle"
     />
   </div>
 </template>
@@ -31,6 +32,9 @@
     methods: {
       onSearch(form = {}) {
         this.searchForm = { ...(this.searchForm || {}), ...form }
+      },
+      otherActionHandle({ type, data: { bridgeId } }) {
+        this.$router.push(`${bridgeId}/sensor`)
       }
     }
   }

@@ -97,7 +97,7 @@
         form.validate(async valid => {
           if (valid) {
             const [s, e] = this.model.dateTimes
-            const startTime = moment(s).add(-15, 'minute').format(timerFormat)
+            const startTime = moment(s).format(timerFormat)
             const endTime = moment(e).format(timerFormat)
             this.getData(startTime, endTime)
           }

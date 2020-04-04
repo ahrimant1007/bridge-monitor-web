@@ -39,32 +39,27 @@ export default [
         'meta': { 'title': '桥梁管理-编辑', 'formType': 'edit' },
         'component': _import('modules/bridge/form'),
         'children': []
+      }, {
+        'path': '/main/bridge/:id/sensor',
+        'name': '传感器管理',
+        'meta': { 'title': '传感管理' },
+        'component': _import('modules/bridge/sensor/index'),
+        'redirect': '/main/bridge/:id/sensor/list',
+        'children': [
+          {
+            'path': '/main/bridge/:id/sensor/list',
+            'name': '传感器管理-列表',
+            'meta': { 'title': '传感管理-列表' },
+            'component': _import('modules/bridge/sensor/list'),
+            'children': []
+          }, {
+            'path': '/main/bridge/:id/sensor/edit/:sid',
+            'name': '传感器管理-编辑',
+            'meta': { 'title': '传感管理-编辑', 'formType': 'edit' },
+            'component': _import('modules/bridge/sensor/form'),
+            'children': []
+          }]
       }]
-  }, {
-    'path': '/main/sensor',
-    'name': '传感管理',
-    'meta': { 'title': '传感管理' },
-    'component': _import('modules/sensor/index'),
-    'redirect': '/main/sensor/list',
-    'children': [{
-      'path': '/main/sensor/list',
-      'name': '传感管理-列表',
-      'meta': { 'title': '传感管理-列表' },
-      'component': _import('modules/sensor/list'),
-      'children': []
-    }, {
-      'path': '/main/sensor/add',
-      'name': '传感管理-新增',
-      'meta': { 'title': '传感管理-新增', 'formType': 'add' },
-      'component': _import('modules/sensor/form'),
-      'children': []
-    }, {
-      'path': '/main/sensor/edit/:id',
-      'name': '传感管理-编辑',
-      'meta': { 'title': '传感管理-编辑', 'formType': 'edit' },
-      'component': _import('modules/sensor/form'),
-      'children': []
-    }]
   }, {
     'path': '/main/institution',
     'name': '单位管理',
@@ -149,13 +144,13 @@ export default [
       'path': '/main/download/warn',
       'name': '安全预警数据',
       'meta': { 'title': '安全预警数据', type: 'warn' },
-      'component': _import('modules/download/index'),
+      'component': _import('modules/download/warn'),
       'children': []
     }, {
       'path': '/main/download/eff',
       'name': '车辆效应数据',
       'meta': { 'title': '车辆效应数据', type: 'eff' },
-      'component': _import('modules/download/index'),
+      'component': _import('modules/download/eff'),
       'children': []
     }]
   }, {

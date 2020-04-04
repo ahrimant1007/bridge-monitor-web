@@ -24,25 +24,24 @@ class Service extends CrudService {
   /**
    * 上传点位图片
    * @param bridgeId
-   * @param img blob
+   * @param image blob
    * @returns {Promise<*>}
    */
-  uploadPointImage = async (bridgeId, img) => {
-    const formDate = this.o2formData({ bridgeId, img })
+  uploadPointImage = async (bridgeId, image) => {
+    const formDate = this.o2formData({ bridgeId, image })
     return this.post(`${prefix}/savePointImg`, formDate)
   }
 
   /**
    * 上传桥梁图片
    * @param bridgeId
-   * @param img blob
+   * @param image blob
    * @returns {Promise<*>}
    */
-  uploadImage = async (bridgeId, img) => {
-    const formDate = this.o2formData({ bridgeId, img })
+  uploadImage = async (bridgeId, image) => {
+    const formDate = this.o2formData({ bridgeId, image })
     return this.post(`${prefix}/saveImg`, formDate)
   }
-
 }
 
 export default Service.getInstance()

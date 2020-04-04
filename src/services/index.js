@@ -43,7 +43,7 @@ class Service extends GlobalService {
    * @returns {Promise<*>}
    */
   updatePassword = async (model) => {
-    return this.post(`sys/user/savePasswd`, model)
+    return this.post(`modifyPasswd`, model)
   }
 }
 

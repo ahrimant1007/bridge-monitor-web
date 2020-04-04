@@ -24,7 +24,7 @@
   </div>
 </template>
 <script>
-  import BridgeTree from '../components/tree'
+  import BridgeTree from './tree'
   import Realtime from './realtime'
   import RealtimeEff from './realtimeEff'
   import History from './history'

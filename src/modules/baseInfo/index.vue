@@ -2,7 +2,7 @@
   <div class="base-info-page">
     <el-container>
       <el-aside class="base-section">
-        <bridge-tree v-model="selectedId" />
+        <bridge-list v-model="selectedId" />
       </el-aside>
       <el-main class="base-section">
         <bridge-detail
@@ -15,11 +15,11 @@
 </template>
 <script>
   import BridgeDetail from './form'
-  import BridgeTree from '../components/tree'
+  import BridgeList from './list'
 
   export default {
     name: 'BaseBridgeList',
-    components: { BridgeDetail, BridgeTree },
+    components: { BridgeDetail, BridgeList },
     data() {
       return {
         selectedId: null,

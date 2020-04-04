@@ -50,12 +50,12 @@ class Service extends GlobalService {
    */
   getWarnList = async (
     {
-      sensorNo, warnLevel,
+      sensorId, warnLevel,
       startTime, endTime,
       currentPage, pageSize
     }) => {
     const body = {
-      sensorNo, warnLevel,
+      sensorId, warnLevel,
       startTime, endTime,
       currentPage, pageSize
     }

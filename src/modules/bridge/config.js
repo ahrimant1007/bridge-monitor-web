@@ -25,6 +25,6 @@ export const config = configMaker({
     { value: 'imgUrl', label: '图片URL', notForm: true, notTable: true },
     { value: 'pointUrl', label: '测点布设图', notForm: true, notTable: true },
   ],
-  actions: ['edit', 'children'],
+  actions: ['edit', { text: '传感器', action: 'sensor', classname: 'info' }],
 })
 

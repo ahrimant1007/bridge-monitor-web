@@ -37,7 +37,7 @@ export default [
     component: () => import('@/views/error/403.vue')
   },
   {
-    path: '*',
+    path: '1*',
     redirect: '/404',
   },
 ]

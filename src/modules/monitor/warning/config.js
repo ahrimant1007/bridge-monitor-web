@@ -20,7 +20,7 @@ export const config = configMaker({
       label: '报警值',
     },
     {
-      value: 'warningLevel',
+      value: 'warnLevel',
       label: '报警等级',
       type: TYPE_ENUM.SELECT,
       inSearch: true,

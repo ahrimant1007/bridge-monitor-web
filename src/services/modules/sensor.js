@@ -9,7 +9,7 @@ class Service extends CrudService {
     super(prefix)
     this.getListPath = `${this.path}/listSensor`
     this.updatePath = `${this.path}/saveSensor`
-    this.updatePath = `${this.path}/saveSensor`
+    this.getItemPath = `${this.path}/sensorDetail`
     return instance || this
   }
 

@@ -181,6 +181,7 @@
     },
     watch: {
       searchForm() {
+        console.log(this.searchForm)
         return this.refreshData()
       }
     },

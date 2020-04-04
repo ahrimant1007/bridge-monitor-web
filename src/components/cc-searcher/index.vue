@@ -71,6 +71,10 @@
         required: false,
         default: () => ({})
       },
+      dateFormat: {
+        type: String,
+        default: 'YYYY-MM-DD HH:mm:ss'
+      }
     },
     data() {
       const searchForm = this.mergeForm()
@@ -104,8 +108,8 @@
       },
       dataRangePicker(event, startKey = 'startTime', endKey = 'endTime') {
         const [b, e] = event
-        this.searchForm[startKey] = moment(b).format('YYYY-MM-DD')
-        this.searchForm[endKey] = moment(e).format('YYYY-MM-DD')
+        this.searchForm[startKey] = moment(b).format(this.dateFormat)
+        this.searchForm[endKey] = moment(e).format(this.dateFormat)
       },
     },
   }
