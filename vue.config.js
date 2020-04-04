@@ -9,7 +9,7 @@ module.exports = {
     port: 3000,
     proxy: {
       '/api': {
-        target: 'http://hhupc.imwork.net:43709',
+        target: 'http://localhost:18080/',
         changeOrigin: true,
         pathRewrite: {
           '/api': ''

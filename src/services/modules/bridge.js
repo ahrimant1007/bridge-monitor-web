@@ -6,16 +6,11 @@ let instance = null
  * 桥梁 - 传感器相关
  */
 
-const prefix = '/sys/bridge/'
+const prefix = 'sys/bridge'
 
 class Service extends CrudService {
   constructor() {
     super(prefix)
-    this.getListPath = `${this.path}/list`
-    this.addPath = `${this.path}/add`
-    this.deletePath = `${this.path}/delete`
-    this.updatePath = `${this.path}/update`
-    this.getItemPath = `${this.path}/detail`
     return instance || this
   }
 
@@ -25,6 +20,29 @@ class Service extends CrudService {
     }
     return instance
   }
+
+  /**
+   * 上传点位图片
+   * @param bridgeId
+   * @param img blob
+   * @returns {Promise<*>}
+   */
+  uploadPointImage = async (bridgeId, img) => {
+    const formDate = this.o2formData({ bridgeId, img })
+    return this.post(`${prefix}/savePointImg`, formDate)
+  }
+
+  /**
+   * 上传桥梁图片
+   * @param bridgeId
+   * @param img blob
+   * @returns {Promise<*>}
+   */
+  uploadImage = async (bridgeId, img) => {
+    const formDate = this.o2formData({ bridgeId, img })
+    return this.post(`${prefix}/saveImg`, formDate)
+  }
+
 }
 
 export default Service.getInstance()

@@ -63,7 +63,7 @@
     height: 140px;
     cursor: pointer;
     border: none;
-    margin: 30px 10px ;
+    margin: 20px 10px ;
     .card-title {
       font-size: 26px;
       font-weight: bold;
@@ -103,7 +103,6 @@
       font-size: 12px;
     }
   }
-
   .card-bg-icon {
     position: absolute;
     font-size: 60px;

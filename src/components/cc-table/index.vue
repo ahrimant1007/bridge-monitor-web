@@ -15,6 +15,8 @@
       :min-height="height"
       element-loading-text="拼命加载中..."
       style="width: 100%"
+      :height="height"
+      :max-height="800"
     >
       <el-table-column
         type="index"
@@ -23,23 +25,36 @@
         width="80"
       >
       </el-table-column>
-      <el-table-column
-        v-for="column of columns"
-        :key="column.value"
-        :prop="column.value"
-        :label="column.label"
-        :width="column.width || 'auto'"
-        :min-width="140"
-        show-overflow-tooltip
-        header-align="center"
-        :align="column.align || 'right'"
-        :formatter="column.render"
-      >
-      </el-table-column>
+      <template v-for="column of columns">
+        <el-table-column
+          v-if="column.slot"
+          :key="column.value"
+          :prop="column.value"
+          :label="column.label"
+          :width="column.width || 'auto'"
+        >
+          <template slot-scope="scope">
+            <slot :name="column.value" :row="scope.row"></slot>
+          </template>
+        </el-table-column>
+        <el-table-column
+          v-else
+          :key="column.value"
+          :prop="column.value"
+          :label="column.label"
+          :width="column.width || 'auto'"
+          :min-width="140"
+          show-overflow-tooltip
+          header-align="center"
+          :align="column.align || 'center'"
+          :formatter="column.render"
+        >
+        </el-table-column>
+      </template>
       <el-table-column
         v-if="!!tableActions.length"
         label="操作"
-        :width="tableActions.length * 40 + 20"
+        :width="tableActions.length * 50 + 40"
         align="center"
         fixed="right"
       >
@@ -51,7 +66,12 @@
               title="确定删除吗？"
               @onConfirm="del(scope.row)"
             >
-              <el-button slot="reference" type="text">删除</el-button>
+              <el-button
+                slot="reference"
+                class="danger"
+                type="text"
+              >删除
+              </el-button>
             </el-popconfirm>
             <el-button
               v-else-if="typeof action === 'string'"
@@ -99,7 +119,7 @@
       actions: {
         type: Array,
         required: false,
-        default: () => ['add', 'edit', 'del']
+        default: () => []
       },
       frontendUrl: {
         type: String,
@@ -112,7 +132,7 @@
       },
       height: {
         type: Number,
-        default: 500,
+        default: 530,
       },
       searchForm: {
         type: Object,
@@ -126,10 +146,10 @@
         type: String,
         default: 'id',
       },
-      otherActionHandle: {
+      doOtherAction: {
         type: Function,
         default: new Function(),
-      }
+      },
     },
     data() {
       this.getListFunc = this.service.getList
@@ -168,7 +188,7 @@
     created() {
       this.id = this.$route.params.id
       this.addUrl = `${this.frontendUrl}/add`
-      this.editUrl = key => `${this.frontendUrl}/edit/${key}`
+      this.editUrl = key => `${this.frontendUrl}/edit/${[key]}`
       this.childUrl = key => `${this.frontendUrl}/${key}/children`
       this.refreshData()
     },
@@ -184,10 +204,10 @@
           return (this.loadList = false)
         })
         if (!data) return
-        const { list, total, currentPage } = data
+        const { list, total, currentPage, pageNum } = data
         this.tableData = list
         this.total = total
-        this.currentPage = currentPage + (1 - PAGE_START_NO)
+        this.currentPage = (currentPage || pageNum) + (1 - PAGE_START_NO)
       },
       handleSizeChange(pageSize) {
         this.pageSize = pageSize
@@ -207,7 +227,7 @@
       },
       async del(row) {
         const value = row[this.codeKey]
-        await this.delItemFunc({ [this.codeKey]: value })
+        await this.delItemFunc(value)
         this.refreshData()
         this.reset && this.reset()
         this.$message.success('删除成功')
@@ -223,7 +243,7 @@
        * @param data
        */
       doAction(type, data) {
-        this.$emit('doAction', { type, data })
+        this.$emit('doOtherAction', { type, data })
       },
     },
   }
@@ -232,5 +252,12 @@
   .group-btn-item {
     display: inline;
     padding: 0 1px;
+  }
+  .pagination-container {
+    margin-top: 20px;
+    text-align: right;
+  }
+  .cc-table {
+    margin-top: 20px;
   }
 </style>

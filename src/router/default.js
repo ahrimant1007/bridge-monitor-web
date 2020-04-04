@@ -10,7 +10,7 @@ export default [
   {
     path: '/main',
     name: '首页',
-    redirect: '/main/monitor',
+    redirect: '/main/base',
     meta: {
       title: '首页'
     },

@@ -1,22 +1,107 @@
 <template>
-  <el-form ref="cForm" class="form" :model="item" :rules="rules" label-width="130px">
-    <el-form-item label="字典名称：" prop="name">
-      <el-input v-model="item.name" placeholder="请输入名称"></el-input>
-    </el-form-item>
-    <el-form-item label="字典描述：">
-      <el-input v-model="item.info" type="textarea" :rows="3" placeholder="请输入备注"></el-input>
-    </el-form-item>
-    <el-form-item>
+  <el-form
+    ref="cForm"
+    class="c-form"
+    :model="model"
+    :rules="rules"
+    label-width="130px"
+    :class="classname"
+  >
+    <el-row>
+      <el-col v-for="column of columns" :key="column.value" :span="column.span || 24">
+        <el-form-item
+          :label="column.label+'：'"
+          :prop="column.value"
+          :rules="column.rules"
+        >
+          <el-input
+            v-if="column.type === TYPE_ENUM.INPUT || !column.type"
+            v-model="model[column.value]"
+            :disabled="column.disabled"
+            :placeholder="`请输入${column.label}`"
+          ></el-input>
+          <el-input
+            v-if="column.type === TYPE_ENUM.NUMBER"
+            v-model="model[column.value]"
+            :disabled="column.disabled"
+            type="number"
+            :placeholder="`请输入${column.label}`"
+          ></el-input>
+          <el-input
+            v-if="column.type === TYPE_ENUM.TEXT_AREA"
+            v-model="model[column.value]"
+            :disabled="column.disabled"
+            :rows="3"
+            type="textarea"
+            :placeholder="`请输入${column.label}`"
+          ></el-input>
+          <el-input
+            v-if="column.type === TYPE_ENUM.PASSWORD"
+            v-model="model[column.value]"
+            :disabled="column.disabled"
+            show-password
+            :placeholder="`请输入${column.label}`"
+          ></el-input>
+          <el-select
+            v-if="column.type === TYPE_ENUM.SELECT"
+            v-model="model[column.value]"
+            :disabled="column.disabled"
+            placeholder="请选择"
+            style="width:100%"
+          >
+            <template v-if="!!column.service">
+              <el-option
+                v-for="opt in dimOptions[column.value]"
+                :key="opt.value"
+                :label="opt.label"
+                :value="opt.value"
+              />
+            </template>
+            <template v-else>
+              <el-option
+                v-for="opt in column.options"
+                :key="opt.value"
+                :label="opt.label"
+                :value="opt.value"
+              />
+            </template>
+          </el-select>
+          <el-date-picker
+            v-if="column.type === TYPE_ENUM.DATE"
+            v-model="model[column.value]"
+            :disabled="column.disabled"
+            :type="column.dateType || 'date'"
+            clearable
+            placeholder="选择日期"
+            format="yyyy 年 MM 月 dd 日"
+          ></el-date-picker>
+          <el-date-picker
+            v-if="column.type === TYPE_ENUM.DATE_RANGE"
+            v-model="model[column.value]"
+            :disabled="column.disabled"
+            clearable
+            :type="column.dateType || 'daterange'"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            @change="dataRangePicker($event,column.startKey,column.endKey)"
+          ></el-date-picker>
+        </el-form-item>
+      </el-col>
+    </el-row>
+    <el-form-item v-if="!isReview">
       <el-button type="primary" class="form-btn" @click="submitHandle">提交</el-button>
       <el-button class="form-btn" @click="goBack">取消</el-button>
     </el-form-item>
   </el-form>
 </template>
 <script>
+  import { TYPE_ENUM } from '@/components/cc-constants/constants'
+  import moment from 'moment'
+
   export default {
     name: 'CcForm',
     props: {
-      options: {
+      columns: {
         type: Array,
         required: true,
         default: () => []
@@ -26,46 +111,124 @@
         required: false,
         default: () => ({})
       },
-      paramsKey: {
+      defaultValueForm: {
+        type: Object,
+        required: false,
+        default: () => ({})
+      },
+      isEditForm: {
+        type: Boolean,
+        required: false,
+        default: true,
+      },
+      codeKey: {
         type: String,
         required: false,
         default: 'id'
       },
+      codeValue: {
+        type: String,
+        required: false,
+        default: null
+      },
+      classname: {
+        type: String,
+        default: ''
+      },
       service: {
-        type: Function,
+        type: Object,
         required: true,
-        default: new Function(),
+        default: () => ({}),
+      },
+      responseIntercept: {
+        type: Function,
+        default: d => d,
+      },
+      isReview: {
+        type: Boolean,
+        default: false,
+      },
+      outSubmit: {
+        type: Function,
+        default: null,
+      },
+      getDataCallBack: {
+        type: Function,
+        default: () => ({}),
       }
     },
     data() {
+      const model = {}
+      this.columns.forEach(e => {
+        if (e.type === TYPE_ENUM.TREE_SELECT) {
+          model[e.value] = null
+        } else {
+          model[e.value] = this.defaultValueForm[e.value] || ''
+        }
+        if (e.service) {
+          this.setDimOptions(e.value, e.service, e.param)
+        }
+      })
       return {
-        item: {}
+        model,
+        submitFunc: null,
+        TYPE_ENUM,
+        dimOptions: {}
+      }
+    },
+    watch: {
+      defaultValueForm(value) {
+        this.model = { ...this.model, ...value }
+      },
+      codeValue(value) {
+        this.id = value
+        if (this.isEditForm) {
+          this.getData()
+        }
       }
     },
     created() {
-      this.id = this.$route.params[this.paramsKey]
-      this.isEditForm = this.$route.meta.formType === 'edit'
+      this.id = this.codeValue || this.$route.params.id
+      let submitFunc
       if (this.isEditForm) {
-        setTimeout(() => this.getData(), 0)
+        this.getData()
+        submitFunc = this.service.editItem
+      } else {
+        submitFunc = this.service.addItem
       }
+      this.submitFunc = submitFunc
     },
     methods: {
       async getData() {
-        if (this.id) {
-          const data = await this.service.getItem(this.id)
-          this.updateItemFunc(data)
-        } else {
-          this.$message.error('数据ID不存在，请检查后重写')
+        const data = await this.service.getItem(this.id)
+        if (this.responseIntercept && data) {
+          this.model = this.responseIntercept(data)
+          this.$emit('getDataCallBack', { ...this.model })
         }
+      },
+      async setDimOptions(key, service, param) {
+        if (key && service) {
+          this.dimOptions[key] = await service(param)
+          this.dimOptions = { ...this.dimOptions }
+        }
+      },
+      dataRangePicker(event, startKey = 'startTime', endKey = 'endTime') {
+        const [b, e] = event
+        this.model[startKey] = moment(b).format('YYYY-MM-DD')
+        this.model[endKey] = moment(e).format('YYYY-MM-DD')
       },
       submitHandle() {
         const { cForm: form } = this.$refs
-        form.valid(async valid => {
+        form.validate(async valid => {
           if (valid) {
-            const item = form.obj
-            await this.service.editItem(this.id, item)
-            this.$message.success('修改成功!')
-            this.goBack()
+            const result = { ...this.model }
+            if (this.outSubmit) {
+              this.$emit('outSubmit', result)
+            } else {
+              await this.submitFunc(result)
+              this.$message.success(`${this.isEditForm ? '修改' : '添加'}成功!`)
+              this.goBack()
+            }
           } else {
             this.$message.error('数据填写错误，请按要求填写!')
           }
@@ -73,7 +236,7 @@
       },
       goBack() {
         this.$router.go(-1)
-      }
+      },
     }
   }
 </script>

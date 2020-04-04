@@ -2,12 +2,12 @@ import GlobalService from './GlobalService'
 
 export default class extends GlobalService {
   constructor(path = '') {
-    super();
+    super()
     this.path = path
     this.getListPath = `${this.path}/list`
     this.addPath = `${this.path}/add`
     this.deletePath = `${this.path}/delete`
-    this.updatePath = `${this.path}/update`
+    this.updatePath = `${this.path}/save`
     this.getItemPath = `${this.path}/detail`
   }
 
@@ -17,7 +17,7 @@ export default class extends GlobalService {
    * @returns {Promise<*>}
    */
   getList = async (model) => {
-    return this.post({ url: this.getListPath, model })
+    return this.post(this.getListPath, model)
   }
 
   /**
@@ -26,7 +26,7 @@ export default class extends GlobalService {
    * @returns {Promise<*>}
    */
   getItem = async (id) => {
-    return this.post({ url: this.getItemPath, model: { id } })
+    return this.post(`${this.getItemPath}/${id}`)
   }
 
   /**
@@ -35,18 +35,16 @@ export default class extends GlobalService {
    * @returns {Promise<*>}
    */
   addItem = async (model) => {
-    return this.post({ url: this.addPath, model })
+    return this.post(this.addPath, model)
   }
 
   /**
    * 编辑
-   * @param id
    * @param model object
    * @returns {Promise<*>}
    */
-  editItem = async (id, model) => {
-    const m = { id, ...model }
-    return this.post({ url: this.updatePath, model: m })
+  editItem = async (model) => {
+    return this.post(this.updatePath, model)
   }
 
   /**
@@ -55,6 +53,6 @@ export default class extends GlobalService {
    * @returns {Promise<*>}
    */
   delItem = async (id) => {
-    return this.post({ url: this.deletePath, model: { id } })
+    return this.post(`${this.deletePath}/${id}`)
   }
 }

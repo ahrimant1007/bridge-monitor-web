@@ -1,10 +1,84 @@
 const historyCurve = {
-  'code': '0', // 0表示成功，1表示失败
+  'code': '000000',
   'data': [
-    10.0,
-    2.51
+    {
+      'captureTime': 1585713601000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713602000,
+      'captureValue': 2
+    },
+    {
+      'captureTime': 1585713603000,
+      'captureValue': 5
+    },
+    {
+      'captureTime': 1585713604000,
+      'captureValue': 3
+    },
+    {
+      'captureTime': 1585713605000,
+      'captureValue': 4
+    },
+    {
+      'captureTime': 1585713606000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713606000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713607000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713608000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713609000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713610000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713611000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713612000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713613000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713614000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713615000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713616000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713617000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713618000,
+      'captureValue': 1
+    }
   ],
-  'msg': '实时数据获取成功' // 失败：实时数据获取失败，请稍后再试
+  'msg': '获取实时数据成功'
 }
 
 const warn = {
@@ -42,12 +116,86 @@ const warn = {
 }
 
 const realTimeCurve = {
-  'code': '0', // 0表示成功，1表示失败
+  'code': '000000',
   'data': [
-    10.0,
-    2.51
+    {
+      'captureTime': 1585713601000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713602000,
+      'captureValue': 2
+    },
+    {
+      'captureTime': 1585713603000,
+      'captureValue': 5
+    },
+    {
+      'captureTime': 1585713604000,
+      'captureValue': 3
+    },
+    {
+      'captureTime': 1585713605000,
+      'captureValue': 4
+    },
+    {
+      'captureTime': 1585713606000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713606000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713607000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713608000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713609000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713610000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713611000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713612000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713613000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713614000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713615000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713616000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713617000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713618000,
+      'captureValue': 1
+    }
   ],
-  'msg': '实时数据获取成功' // 失败：实时数据获取失败，请稍后再试
+  'msg': '获取实时数据成功'
 }
 
 const bridgeSensors = {
@@ -78,29 +226,177 @@ const bridgeInfo = {
 }
 
 const realTimeCurveEff = {
-  'code': '0', // 0表示成功，1表示失败
+  'code': '000000',
   'data': [
-    10.0,
-    2.51
+    {
+      'captureTime': 1585713601000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713602000,
+      'captureValue': 2
+    },
+    {
+      'captureTime': 1585713603000,
+      'captureValue': 5
+    },
+    {
+      'captureTime': 1585713604000,
+      'captureValue': 3
+    },
+    {
+      'captureTime': 1585713605000,
+      'captureValue': 4
+    },
+    {
+      'captureTime': 1585713606000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713606000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713607000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713608000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713609000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713610000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713611000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713612000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713613000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713614000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713615000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713616000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713617000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713618000,
+      'captureValue': 1
+    }
   ],
-  'msg': '实时数据获取成功' // 失败：实时数据获取失败，请稍后再试
+  'msg': '获取实时数据成功'
 }
 
 const historyCurveEff = {
-  'code': '0', // 0表示成功，1表示失败
+  'code': '000000',
   'data': [
-    10.0,
-    2.51
+    {
+      'captureTime': 1585713601000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713602000,
+      'captureValue': 2
+    },
+    {
+      'captureTime': 1585713603000,
+      'captureValue': 5
+    },
+    {
+      'captureTime': 1585713604000,
+      'captureValue': 3
+    },
+    {
+      'captureTime': 1585713605000,
+      'captureValue': 4
+    },
+    {
+      'captureTime': 1585713606000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713606000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713607000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713608000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713609000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713610000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713611000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713612000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713613000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713614000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713615000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713616000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713617000,
+      'captureValue': 1
+    },
+    {
+      'captureTime': 1585713618000,
+      'captureValue': 1
+    }
   ],
-  'msg': '实时数据获取成功' // 失败：实时数据获取失败，请稍后再试
+  'msg': '获取实时数据成功'
 }
 
 export default {
-  'post|/mock/sys/monitor/historyCurve': historyCurve,
-  'post|/mock/sys/monitor/warn': warn,
-  'post|/mock/sys/monitor/realTimeCurve': realTimeCurve,
-  'post|/mock/sys/monitor/bridgeSensors': bridgeSensors,
-  'post|/mock/sys/monitor/bridgeInfo': bridgeInfo,
-  'post|/mock/sys/monitor/realTimeCurveEff': realTimeCurveEff,
-  'post|/mock/sys/monitor/historyCurveEff': historyCurveEff,
+  'post|/mock/monitor/historyCurve': historyCurve,
+  'post|/mock/monitor/warn': warn,
+  'post|/mock/monitor/realTimeCurve': realTimeCurve,
+  'post|/mock/monitor/bridgeSensors': bridgeSensors,
+  'post|/mock/monitor/bridgeInfo': bridgeInfo,
+  'post|/mock/monitor/realTimeCurveEff': realTimeCurveEff,
+  'post|/mock/monitor/historyCurveEff': historyCurveEff,
 }

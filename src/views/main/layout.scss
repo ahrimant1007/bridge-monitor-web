@@ -7,7 +7,8 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, .1);
   position: relative;
-
+  min-width: 1400px;
+  overflow: auto;
   .el-header {
     //background-color: rgba(10, 50, 90, 0.8);
     background-color: rgba(0, 0, 0, .8);
@@ -17,15 +18,11 @@
     display: flex;
     justify-content: space-between;
   }
-
-  .el-aside {
-    $h: 100vh;
-    background-color: #D3DCE6;
-    color: #333;
-    text-align: center;
-    height: calc(#{$h} - #{$header_height}); ;
+  .aside-menus {
+    position: absolute;
+    z-index: 100;
+    bottom: 20px;
   }
-
   > .el-container > .el-container {
     padding: 0;
     background-color: rgba(0, 0, 0, .7);
@@ -40,6 +37,8 @@
     min-width: 1024px;
     margin: 10px;
     overflow: hidden;
+    min-height: 400px;
+    overflow-y: auto;
   }
 }
 .header-title {

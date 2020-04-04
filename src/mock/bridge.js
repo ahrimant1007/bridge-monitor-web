@@ -29,6 +29,14 @@ const listSensor = {
         'captureFrequency': 25, // 频率
         'yellowWarningValue': 1.2, // 黄色预警值
         'orangeWarningValue': 3.5 // 橙色预警值
+      },
+      {
+        'sensorId': 'XXXXXXXA', // 传感器id
+        'sensorNo': '00010001', // 传感器编号
+        'sensorShowNo': 'N-1-2/5', // 传感器显示编号
+        'captureFrequency': 25, // 频率
+        'yellowWarningValue': 1.1, // 黄色预警值
+        'orangeWarningValue': 3.2 // 橙色预警值
       }
     ],
     'navigatePages': 8, // 导航页码数

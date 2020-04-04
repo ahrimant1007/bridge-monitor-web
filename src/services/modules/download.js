@@ -29,7 +29,7 @@ class Service extends GlobalService {
    * @param endTime
    * @returns {Promise<*>}
    */
-  warn = async ({ sensorNo, warnLevel, startTime, endTime }) => {
+  downloadWarn = async ({ sensorNo, warnLevel, startTime, endTime }) => {
     const body = { sensorNo, warnLevel, startTime, endTime, }
     return this.post(`${prefix}/warn`, body)
   }
@@ -41,7 +41,7 @@ class Service extends GlobalService {
    * @param endTime
    * @returns {Promise<*>}
    */
-  eff = async ({ sensorNo, startTime, endTime }) => {
+  downloadEff = async ({ sensorNo, startTime, endTime }) => {
     const body = { sensorNo, startTime, endTime, }
     return this.post(`${prefix}/eff`, body)
   }

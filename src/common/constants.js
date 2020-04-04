@@ -16,6 +16,7 @@ export const APP_COLORS = {
   GRAY_DARK: '#343a40',
   PRIMARY: '#007bff',
   SECONDARY: '#6c757d',
+
   SUCCESS: '#28a745',
   INFO: '#17a2b8',
   WARNING: '#ffc107',
@@ -25,6 +26,16 @@ export const APP_COLORS = {
 }
 
 export const moduleConfigs = {
+  baseInfo: {
+    key: 1,
+    bgColor: APP_COLORS.PRIMARY,
+    color: APP_COLORS.LIGHT,
+    title: '桥梁信息',
+    name: 'baseInfo',
+    subTitle: 'bridge baseInfo',
+    icon: 'el-icon-s-home',
+    path: '/main/base'
+  },
   monitor: {
     key: 1,
     bgColor: APP_COLORS.RED,
@@ -35,16 +46,6 @@ export const moduleConfigs = {
     icon: 'el-icon-monitor',
     path: '/main/monitor'
   },
-  warning: {
-    key: 2,
-    bgColor: APP_COLORS.YELLOW,
-    color: APP_COLORS.DARK,
-    title: '安全预警',
-    name: 'warning',
-    subTitle: 'safety warning',
-    icon: 'el-icon-warning-outline',
-    path: '/main/warning'
-  },
   bridge: {
     key: 5,
     bgColor: APP_COLORS.ORANGE,
@@ -52,21 +53,27 @@ export const moduleConfigs = {
     title: '桥梁管理',
     name: 'bridge',
     subTitle: 'bridge manage',
-    icon: 'el-icon-paperclip',
+    icon: 'el-icon-coordinate',
     path: '/main/bridge',
     crud: true,
     hasChild: true,
-    childModule: {
-      title: '传感管理',
-      name: 'sensor',
-      path: 'sensor',
-      crud: true,
-    }
+  },
+  sensor: {
+    key: 6,
+    bgColor: APP_COLORS.SECONDARY,
+    color: APP_COLORS.LIGHT,
+    title: '传感器管理',
+    name: 'sensor',
+    subTitle: 'sensor manage',
+    icon: 'el-icon-s-operation',
+    path: '/main/sensor',
+    crud: true,
+    hasChild: true,
   },
   institution: {
-    key: 6,
+    key: 7,
     bgColor: APP_COLORS.TEAL,
-    color: APP_COLORS.LIGHT,
+    color: APP_COLORS.GRAY_DARK,
     title: '单位管理',
     name: 'institution',
     subTitle: 'institution manage',
@@ -87,7 +94,7 @@ export const moduleConfigs = {
   },
   role: {
     key: 9,
-    bgColor: APP_COLORS.BLUE,
+    bgColor: APP_COLORS.PINK,
     color: APP_COLORS.LIGHT,
     title: '角色管理',
     name: 'role',
@@ -110,13 +117,13 @@ export const moduleConfigs = {
         key: 41,
         path: '/main/download/warn',
         name: 'warn',
-        title: '安全预警数据',
+        title: '安全预警数据下载',
       },
       {
         key: 42,
         name: 'eff',
         path: '/main/download/eff',
-        title: '车辆效应数据',
+        title: '车辆效应数据下载',
       },
     ]
   },

@@ -11,9 +11,9 @@
         </div>
       </el-header>
       <el-container>
-        <el-aside style="width:150px">
+        <div class="aside-menus">
           <nav-menu :menus="asideMenus" />
-        </el-aside>
+        </div>
         <el-main>
           <breadcrumb />
           <router-view />

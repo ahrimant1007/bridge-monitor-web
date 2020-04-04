@@ -26,8 +26,7 @@ class Service extends GlobalService {
    * @returns {Promise<*>}
    */
   login = async ({ username, password }) => {
-    const query = this.o2query({ username, password })
-    return this.post(`login?${query}`)
+    return this.post(`login`, { userName: username, password })
   }
 
   /**
@@ -35,8 +34,16 @@ class Service extends GlobalService {
    * @returns {Promise<*>}
    */
   getUserInfo = async (id) => {
-    const query = this.o2query({ id })
-    return this.post(`sys/user/sys/user/detail?${query}`)
+    return this.post(`sys/user/detail/${id}`)
+  }
+
+  /**
+   * 用户修改密码
+   * @param model
+   * @returns {Promise<*>}
+   */
+  updatePassword = async (model) => {
+    return this.post(`sys/user/savePasswd`, model)
   }
 }
 

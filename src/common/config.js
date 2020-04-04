@@ -1,4 +1,5 @@
-const { NODE_ENV } = process.env
+// const { NODE_ENV } = process.env
+const NODE_ENV = 'dev'
 
 const local = {
   // 本地mock地址

@@ -19,20 +19,20 @@
     flex-flow: column;
     justify-content: flex-start;
     flex-wrap: wrap;
-    width: 600px;
+    width: 700px;
   }
 
   .demo-chart-0 {
     position: absolute;
-    top: 45%;
-    left: 35%;
+    top: 400px;
+    left: 520px;
     z-index: 1;
   }
 
   .app-title {
     position: absolute;
     top: 100px;
-    left: 160px;
+    left: 100px;
     background: rgba(0, 0, 0, .4);
     > span {
       background: linear-gradient(0deg, rgba(113, 143, 155, 1) 16.943359375%, rgba(255, 255, 255, 1) 100%);

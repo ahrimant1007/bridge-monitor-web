@@ -1,4 +1,4 @@
-import _import from '@/utils/_import'
+
 
 const modulesRootPath = 'views/main/modules'
 
@@ -13,7 +13,7 @@ export const makeRouter = (module, fileName = 'index', meta = {}) => {
       title: title,
       ...meta,
     },
-    component: _import(componentPath),
+    component: `_import(${componentPath})`,
   }
   const children = []
   if (crud) {

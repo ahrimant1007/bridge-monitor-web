@@ -1,7 +1,0 @@
-export const TYPE_ENUM = {
-  INPUT: 'INPUT',
-  SELECT: 'SELECT',
-  DATE: 'DATE',
-  DATE_RANGE: 'DATE_RANGE',
-  TREE_SELECT: 'TREE_SELECT'
-}

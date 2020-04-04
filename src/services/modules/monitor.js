@@ -35,7 +35,7 @@ class Service extends GlobalService {
    * @returns {Promise<*>}
    */
   getBridgeSensorsList = async (bridgeId) => {
-    return this.post(`${prefix}/bridgeSensors`)
+    return this.post(`${prefix}/bridgeSensors/${bridgeId}`)
   }
 
   /**
@@ -44,7 +44,7 @@ class Service extends GlobalService {
    * @param warnLevel 预警等级，（橙色预警，黄色预警）
    * @param startTime
    * @param endTime
-   * @param pageNo
+   * @param currentPage
    * @param pageSize
    * @returns {Promise<*>}
    */
@@ -52,25 +52,25 @@ class Service extends GlobalService {
     {
       sensorNo, warnLevel,
       startTime, endTime,
-      pageNo, pageSize
+      currentPage, pageSize
     }) => {
     const body = {
       sensorNo, warnLevel,
       startTime, endTime,
-      pageNo, pageSize
+      currentPage, pageSize
     }
     return this.post(`${prefix}/warn`, body)
   }
 
   /**
    * 历史曲线
-   * @param sensorNo
+   * @param sensorId
    * @param startTime
    * @param endTime
    * @returns {Promise<*>}
    */
-  historyCurve = async ({ sensorNo, startTime, endTime }) => {
-    const body = { sensorNo, startTime, endTime }
+  historyCurve = async ({ sensorId, startTime, endTime }) => {
+    const body = { sensorId, startTime, endTime }
     return this.post(`${prefix}/historyCurve`, body)
   }
 
@@ -81,35 +81,34 @@ class Service extends GlobalService {
    * @param endTime 截止时间
    * @returns {Promise<*>}
    */
-  realTimeCurve = async ({ sensorId, seconds, endTime }) => {
-    const body = { sensorId, seconds, endTime }
+  realTimeCurve = async ({ sensorId, startTime, endTime }) => {
+    const body = { sensorId, startTime, endTime }
     return this.post(`${prefix}/realTimeCurve`, body)
   }
 
   /**
    * 车辆效应
-   * @param sensorNo
+   * @param sensorId
    * @param startTime
    * @param endTime
    * @returns {Promise<*>}
    */
-  realTimeCurveEff = async ({ sensorNo, startTime, endTime }) => {
-    const body = { sensorNo, startTime, endTime }
+  realTimeCurveEff = async ({ sensorId, startTime, endTime }) => {
+    const body = { sensorId, startTime, endTime }
     return this.post(`${prefix}/realTimeCurveEff`, body)
   }
 
   /**
    * 车辆效应历史曲线
-   * @param sensorNo
+   * @param sensorId
    * @param startTime
    * @param endTime
    * @returns {Promise<*>}
    */
-  historyCurveEff = async ({ sensorNo, startTime, endTime }) => {
-    const body = { sensorNo, startTime, endTime }
+  historyCurveEff = async ({ sensorId, startTime, endTime }) => {
+    const body = { sensorId, startTime, endTime }
     return this.post(`${prefix}/historyCurveEff`, body)
   }
-
 }
 
 export default Service.getInstance()
