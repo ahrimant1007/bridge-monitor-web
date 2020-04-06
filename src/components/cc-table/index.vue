@@ -1,9 +1,10 @@
 <template>
-  <div class="cc-table-container">
+  <el-card class="cc-table" body-style="width:100%;padding:40px">
     <div v-if="hasAddAction" class="add-section">
       <el-button
         icon="el-icon-plus"
         type="success"
+        size="small"
         @click="add"
       >添加
       </el-button>
@@ -20,6 +21,7 @@
     >
       <el-table-column
         type="index"
+        :index="n=>1+n+(currentPage-1)*pageSize"
         align="center"
         label="序号"
         width="80"
@@ -103,7 +105,7 @@
       >
       </el-pagination>
     </div>
-  </div>
+  </el-card>
 </template>
 <script>
   const PAGE_START_NO = 1
@@ -181,7 +183,7 @@
     },
     watch: {
       searchForm() {
-        console.log(this.searchForm)
+        // console.log('in table searchForm change', this.searchForm)
         return this.refreshData()
       }
     },
@@ -196,10 +198,17 @@
     methods: {
       async refreshData(pageNo = PAGE_START_NO) {
         const page = pageNo > PAGE_START_NO ? pageNo : PAGE_START_NO
+
+        const form = { ...(this.searchForm || {}) };
+        ['', '_', '__', '___', 'undefined', 'null'].forEach(key => {
+          if (form[key]) {
+            delete form[key]
+          }
+        })
         const params = {
           currentPage: page,
           pageSize: this.pageSize,
-          ...(this.searchForm || {})
+          ...form,
         }
         const data = await this.getListFunc(params).finally(() => {
           return (this.loadList = false)
@@ -260,5 +269,9 @@
   }
   .cc-table {
     margin-top: 20px;
+    .add-section {
+      float: right;
+      margin-bottom: 10px;
+    }
   }
 </style>

@@ -25,7 +25,7 @@ export const APP_COLORS = {
   DARK: '#343a40',
 }
 
-export const moduleConfigs = {
+const modules = {
   baseInfo: {
     key: 1,
     bgColor: APP_COLORS.PRIMARY,
@@ -141,3 +141,4 @@ export const moduleConfigs = {
     ]
   },
 }
+export const moduleConfigs = modules;

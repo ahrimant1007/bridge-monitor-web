@@ -1,21 +1,23 @@
 <template>
   <div class="page password form-page">
-    <el-form ref="passForm" :model="passForm" status-icon :rules="rules" label-width="100px" class="demo-passForm">
-      <el-form-item label="原密码" prop="srcPass">
-        <el-input v-model="passForm.srcPass" type="password" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="新密码" prop="pass">
-        <el-input v-model="passForm.pass" type="password" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="确认新密码" prop="checkPass">
-        <el-input v-model="passForm.checkPass" type="password" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="submitForm('passForm')">提交</el-button>
-        <el-button @click="resetForm('passForm')">重置</el-button>
-        <el-button @click="goBack">返回</el-button>
-      </el-form-item>
-    </el-form>
+    <el-card>
+      <el-form ref="passForm" :model="passForm" status-icon :rules="rules" label-width="100px" class="demo-passForm">
+        <el-form-item label="原密码" prop="srcPass">
+          <el-input v-model="passForm.srcPass" type="password" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="新密码" prop="pass">
+          <el-input v-model="passForm.pass" type="password" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="确认新密码" prop="checkPass">
+          <el-input v-model="passForm.checkPass" type="password" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="submitForm('passForm')">提交</el-button>
+          <el-button @click="resetForm('passForm')">重置</el-button>
+          <el-button @click="goBack">返回</el-button>
+        </el-form-item>
+      </el-form>
+    </el-card>
   </div>
 </template>
 <script>

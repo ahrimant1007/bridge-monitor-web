@@ -1,24 +1,28 @@
 <template>
   <div class="base-info-page">
     <el-container>
-      <el-aside class="base-section">
-        <bridge-tree v-model="selectedId" :use-level="1" />
+      <el-aside>
+        <el-card>
+          <bridge-tree v-model="selectedId" />
+        </el-card>
       </el-aside>
-      <el-main class="base-section">
-        <el-tabs v-if="selectedId" v-model="tabIndex" type="border-card">
-          <el-tab-pane
-            v-for="item of tabList"
-            :key="item.value"
-            :label="item.label"
-            :name="item.value"
-          >
-          </el-tab-pane>
-          <realtime v-if="tabIndex === '0'" :sensor-id="selectedId" />
-          <history v-if="tabIndex === '1'" :sensor-id="selectedId" />
-          <realtime-eff v-if="tabIndex === '2'" :sensor-id="selectedId" />
-          <history-eff v-if="tabIndex === '3'" :sensor-id="selectedId" />
-          <warning v-if="tabIndex === '4'" :sensor-id="selectedId" />
-        </el-tabs>
+      <el-main>
+        <el-card v-if="selectedId">
+          <el-tabs v-model="tabIndex" type="border-card">
+            <el-tab-pane
+              v-for="item of tabList"
+              :key="item.value"
+              :label="item.label"
+              :name="item.value"
+            >
+            </el-tab-pane>
+            <realtime v-if="tabIndex === '0'" :sensor-id="selectedId" />
+            <history v-if="tabIndex === '1'" :sensor-id="selectedId" />
+            <realtime-eff v-if="tabIndex === '2'" :sensor-id="selectedId" />
+            <history-eff v-if="tabIndex === '3'" :sensor-id="selectedId" />
+            <warning v-if="tabIndex === '4'" :sensor-id="selectedId" />
+          </el-tabs>
+        </el-card>
       </el-main>
     </el-container>
   </div>
@@ -56,19 +60,6 @@
         tabList,
       }
     },
-    watch: {
-      selectedId() {
-        console.log(this.selectedId)
-      },
-      tabIndex() {
-        console.log(this.tabIndex, this.selectedId)
-      }
-    },
-    methods: {
-      tabClick(e) {
-        console.log(e)
-      }
-    }
   }
 </script>
 <style>

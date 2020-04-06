@@ -1,14 +1,16 @@
 <template>
-  <div class="page user-detail-page">
-    <div class="user-details">
-      <div v-for="prop in propertyList" :key="prop.key" class="detail-row">
-        <div class="detail-label">{{ prop.label }}:</div>
-        <div class="detail-value">{{ prop.value }}</div>
+  <div class="page form-page">
+    <el-card>
+      <div class="user-details">
+        <div v-for="prop in propertyList" :key="prop.key" class="detail-row">
+          <div class="detail-label">{{ prop.label }}:</div>
+          <div class="detail-value">{{ prop.value }}</div>
+        </div>
+        <div style="text-align: center">
+          <el-button @click="goBack">返回</el-button>
+        </div>
       </div>
-      <div style="text-align: center">
-        <el-button @click="goBack">返回</el-button>
-      </div>
-    </div>
+    </el-card>
   </div>
 </template>
 <script>
@@ -32,7 +34,7 @@
       const columnList = [
         { key: 'userName', label: '用户名' },
         { key: 'institutionName', label: '单位' },
-        { key: 'realName', label: '真实姓名' },
+        { key: 'realName', label: '姓名' },
         { key: 'createUser', label: '创建人' },
       ]
       const list = columnList.map(e => ({ ...e, value: data[e.key] }))
@@ -49,11 +51,6 @@
 </script>
 <style scoped lang="less">
   .user-details {
-    margin: 100px auto;
-    padding: 20px;
-    background: #f6f9f9;
-    border-radius: 12px;
-    width: 600px;
     .detail-row {
       display: flex;
       color: #555;

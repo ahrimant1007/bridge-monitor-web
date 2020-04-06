@@ -26,13 +26,9 @@
       const el = document.getElementById('chart-wrapper')
       this.chart = echarts.init(el)
       this.chart.setOption(getLineOption('实时曲线', []))
-      const startTime = moment().add(-10, 'minutes').format(timerFormat)
-      this.getData(startTime, true, () => {
-        this.timer = setInterval(() => {
-          const startTime = moment().add(-3, 'seconds').format(timerFormat)
-          this.getData(startTime)
-        }, 3000)
-      })
+      const startTime = moment().add(-1, 'minutes').format(timerFormat)
+      this.getData(startTime, true)
+      this.timer = setInterval(this.getIncreaseData, 3000)
     },
     beforeDestroy() {
       clearInterval(this.timer)
@@ -63,6 +59,10 @@
             data: this.list
           }]
         })
+      },
+      getIncreaseData() {
+        const startTime = moment().add(-3, 'seconds').format(timerFormat)
+        this.getData(startTime)
       }
     }
   }

@@ -1,11 +1,13 @@
 <template>
   <div class="page form-page">
-    <c-form
-      :key-code="codeKey"
-      :columns="formColumns"
-      :service="service"
-      :is-edit-form="isEditForm"
-    />
+    <el-card>
+      <c-form
+        :key-code="codeKey"
+        :columns="formColumns"
+        :service="service"
+        :is-edit-form="isEditForm"
+      />
+    </el-card>
   </div>
 </template>
 <script>

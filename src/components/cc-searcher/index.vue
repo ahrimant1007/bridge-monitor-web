@@ -1,5 +1,5 @@
 <template>
-  <div class="cc-bar-container">
+  <el-card class="cc-bar-container" body-style="display:flex;width:100%;padding: 20px 40px">
     <div v-for="(item,idx) in options" :key="idx" class="searcher">
       <div class="label">{{ item.label }} :</div>
       <div class="searcher-item">
@@ -48,7 +48,7 @@
         <slot name="button"></slot>
       </div>
     </div>
-  </div>
+  </el-card>
 </template>
 <script>
   import { TYPE_ENUM } from '@/components/cc-constants/constants'
@@ -66,7 +66,7 @@
         type: Function,
         default: () => ({}),
       },
-      defaultValueForm: {
+      valueForm: {
         type: Object,
         required: false,
         default: () => ({})
@@ -77,16 +77,13 @@
       }
     },
     data() {
-      const searchForm = this.mergeForm()
       return {
         TYPE_ENUM,
-        searchForm,
+        searchForm: {},
       }
     },
-    watch: {
-      defaultValueForm(value) {
-        this.mergeForm(value)
-      }
+    mounted() {
+      this.initSearchForm()
     },
     methods: {
       search() {
@@ -98,11 +95,21 @@
         })
         this.$emit('submitHandle', this.searchForm)
       },
-      mergeForm() {
-        const form = this.searchForm || {}
+      initSearchForm() {
+        this.options.forEach(e => {
+          const { value, type } = e
+          const valueFormValue = this.valueForm[value]
+          if (type === TYPE_ENUM.DATE_RANGE && valueFormValue) {
+            this.dataRangePicker(valueFormValue)
+          }
+          this.searchForm[value] = valueFormValue || ''
+        })
+        this.searchForm = { ...this.searchForm }
+      },
+      mergeForm(form = {}) {
         this.options.forEach(e => {
           const { value } = e
-          form[value] = this.defaultValueForm[value] || ''
+          this.searchForm[value] = this.valueForm[value] || ''
         })
         return form
       },
@@ -115,14 +122,15 @@
   }
 </script>
 <style scoped lang="less">
-  .cc-bar-container {
+  .el-card.cc-bar-container {
     line-height: 100%;
-    padding: 20px 40px;
-    background: rgba(223, 228, 237, .4);
-    border-radius: 10px;
     width: 100%;
     min-width: 1024px;
     display: flex;
+    .el-card__body {
+      display: flex;
+      width: 100%;
+    }
     .searcher {
       display: flex;
       margin: 6px 12px;

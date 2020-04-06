@@ -1,10 +1,12 @@
 <template>
   <div class="page form-page">
-    <c-form
-      :columns="editOrAddColumns"
-      :service="service"
-      :is-edit-form="isEditForm"
-    />
+    <el-card>
+      <c-form
+        :columns="editOrAddColumns"
+        :service="service"
+        :is-edit-form="isEditForm"
+      />
+    </el-card>
   </div>
 </template>
 <script>

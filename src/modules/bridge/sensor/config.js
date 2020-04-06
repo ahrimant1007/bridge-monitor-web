@@ -7,7 +7,7 @@ export const config = configMaker({
   codeKey: 'sensorId',
   service,
   columns: [
-    { value: 'sensorNo', label: '编号', required: true },
+    { value: 'sensorNo', label: '编号', required: true, disabled: true },
     { value: 'sensorShowNo', label: '显示编号', required: true },
     { value: 'captureFrequency', label: '频率' },
     { value: 'yellowWarningValue', label: '黄色预警值', type: TYPE_ENUM.NUMBER },

@@ -5,7 +5,6 @@ import { Message } from 'element-ui'
 const { baseUrl } = config
 
 const errorHandle = (resp, msg) => {
-  console.error(4, resp)
   Message.error(msg || '未知错误')
 }
 
@@ -51,6 +50,7 @@ export default class {
    * @param extra 拓展配置
    */
   put(path, data, extra) {
+    this._modelCleanNull(data)
     return this.fetch(path, 'put', data, extra)
   }
 
@@ -61,6 +61,7 @@ export default class {
    * @param extra 拓展配置
    */
   post(path, data, extra) {
+    this._modelCleanNull(data)
     return this.fetch(path, 'post', data, extra)
   }
 
@@ -88,11 +89,11 @@ export default class {
             resolve(payload)
           } else {
             // todo 根据接口设计修改
-            const { code, data } = payload
+            const { code, data, msg } = payload
             if (+code === 0) {
               return resolve(data)
             } else {
-              errorHandle(payload, data)
+              errorHandle(payload, msg)
             }
           }
         } else {
@@ -130,12 +131,23 @@ export default class {
   o2formData(o = {}) {
     const formData = new FormData()
     Object.keys(o).forEach(key => {
-      const value = o[key] instanceof File ? o[key] : JSON.stringify(o[key])
+      // const value = o[key] instanceof File ? o[key] : JSON.stringify(o[key])
+      const value = o[key]
       if (value || value === 0) {
         formData.append(key, value)
       }
     })
     return formData
+  }
+
+  _modelCleanNull(o = {}) {
+    Object.keys(o).forEach(key => {
+      // const value = o[key] instanceof File ? o[key] : JSON.stringify(o[key])
+      const value = o[key]
+      if (!value && value !== 0) {
+        delete o[key]
+      }
+    })
   }
 
   /**

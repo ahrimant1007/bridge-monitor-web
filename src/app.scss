@@ -1,24 +1,11 @@
 @import 'theme/index.css';
 @import 'theme/style/index';
 
-.cc-table-container {
-  padding: 20px 40px;
-  background: rgba(223, 228, 237, .4);
-  border-radius: 10px;
-  margin-top: 20px;
-
-  .add-section {
-    height: 50px;
-    float: right;
-  }
-}
-
-
 .el-menu-vertical-demo.el-menu {
   border-right: solid 1px rgba(0, 0, 0, .6);
 }
 
-.form-page {
+.form-page1 {
   background: #f6f9f9;
   border-radius: 12px;
   width: 800px;
@@ -39,4 +26,14 @@
   border-radius: 12px;
   margin: 0 20px;
   overflow-y: auto;
+}
+.el-aside {
+  padding: 20px;
+}
+
+.form-page {
+  width: 800px;
+  padding: 40px;
+  margin: 40px ;
+  text-align: center;
 }

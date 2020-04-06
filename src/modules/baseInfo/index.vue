@@ -1,14 +1,18 @@
 <template>
   <div class="base-info-page">
     <el-container>
-      <el-aside class="base-section">
-        <bridge-list v-model="selectedId" />
+      <el-aside>
+        <el-card>
+          <bridge-list v-model="selectedId" />
+        </el-card>
       </el-aside>
-      <el-main class="base-section">
-        <bridge-detail
-          v-if="selectedId"
-          :bridge-id="selectedId"
-        />
+      <el-main>
+        <el-card>
+          <bridge-detail
+            v-if="selectedId"
+            :bridge-id="selectedId"
+          />
+        </el-card>
       </el-main>
     </el-container>
   </div>

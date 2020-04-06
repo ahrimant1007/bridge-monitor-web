@@ -8,12 +8,12 @@ export const warnConfig = configMaker({
   frontendUrl: '/main/warning',
   service: {
     getList: service.getWarnList,
-    download: downloadService.downloadEff,
+    downloadData: downloadService.downloadWarn,
   },
   columns: [
     { value: 'sensorId', label: '传感器编号' },
 
-    { value: 'sensorNo', label: '传感器显示编号', inSearch: true },
+    { value: 'sensorNo', label: '传感器显示编号'},
     {
       value: 'warningTime',
       label: '报警时间',
@@ -24,7 +24,7 @@ export const warnConfig = configMaker({
       label: '报警值',
     },
     {
-      value: 'warningLevel',
+      value: 'warnLevel',
       label: '报警等级',
       type: TYPE_ENUM.SELECT,
       inSearch: true,
@@ -40,12 +40,12 @@ export const warnConfig = configMaker({
 export const effConfig = configMaker({
   frontendUrl: '/main/eff',
   service: {
-    getList: service.historyCurveEff,
-    download: downloadService.downloadEff,
+    getList: downloadService.getListEff,
+    downloadData: downloadService.downloadEff,
   },
   columns: [
     { value: 'sensorId', label: '传感器编号' },
-    { value: 'sensorNo', label: '传感器显示编号', inSearch: true },
+    { value: 'sensorNo', label: '传感器显示编号'},
     {
       value: 'warningTime',
       label: '报警时间',

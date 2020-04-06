@@ -131,7 +131,7 @@
         required: false,
         default: null
       },
-      frontendKey:{
+      frontendKey: {
         type: String,
         required: false,
         default: 'id'
@@ -146,6 +146,10 @@
         default: () => ({}),
       },
       responseIntercept: {
+        type: Function,
+        default: d => d,
+      },
+      submitIntercept: {
         type: Function,
         default: d => d,
       },
@@ -230,7 +234,8 @@
             if (this.outSubmit) {
               this.$emit('outSubmit', result)
             } else {
-              await this.submitFunc(result)
+              const model = this.submitIntercept(result)
+              await this.submitFunc(model)
               this.$message.success(`${this.isEditForm ? '修改' : '添加'}成功!`)
               this.goBack()
             }

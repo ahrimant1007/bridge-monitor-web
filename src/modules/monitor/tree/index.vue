@@ -3,9 +3,12 @@
     <el-tree
       :props="props"
       :load="loadNode"
-      style="min-height: 80vh"
-      lazy
+      node-key="sensorId"
+      :current-node-key="selectedId"
+      :highlight-current="true"
       @node-click="handleNodeClick"
+      style="min-height: 70vh"
+      lazy
     >
     </el-tree>
   </div>
@@ -27,7 +30,7 @@
       },
       useLevel: {
         type: Number,
-        default: 0,
+        default: 1,
       }
     },
     data() {
@@ -54,7 +57,7 @@
           const { list = [] } = await service.getList(
             { currentPage: 1, pageSize: 2000 })
           if (!this.selectedId && this.useLevel === 0 && list.length) {
-            this.selectedId = list[0].bridgeId
+            // this.selectedId = list[0].bridgeId
           }
           return resolve(
             list.map(e => ({ ...e, id: e.bridgeId, label: e.bridgeName, isLeaf: this.useLevel < node.level }))
@@ -66,7 +69,7 @@
           // const { list = [] } = await sensorService.getList({ bridgeId, currentPage: 1, pageSize: 2000 })
 
           if (!this.selectedId && this.useLevel <= 1 && list.length) {
-            this.selectedId = list[0].sensorId
+            // this.selectedId = list[0].sensorId
           }
           return resolve(
             list.map(e => ({ ...e, id: e.sensorId, label: e.sensorShowNo, isLeaf: this.useLevel < node.level }))
@@ -85,6 +88,6 @@
 </script>
 <style scoped lang="scss">
   .base-tree {
-    padding: 2vh;
+    padding: 1vh;
   }
 </style>

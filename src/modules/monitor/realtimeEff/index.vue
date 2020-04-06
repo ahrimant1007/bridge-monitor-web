@@ -28,12 +28,8 @@
       this.chart = echarts.init(el)
       this.chart.setOption(getLineOption('实时车辆', [], APP_COLORS.BLUE))
       const startTime = moment().add(-1, 'hours').format(timerFormat)
-      this.getData(startTime, true, () => {
-        this.timer = setInterval(() => {
-          const startTime = moment().add(-3, 'seconds').format(timerFormat)
-          this.getData(startTime)
-        }, 6000)
-      })
+      this.getData(startTime, true)
+      this.timer = setInterval(this.getIncreaseData, 6000)
     },
     beforeDestroy() {
       clearInterval(this.timer)
@@ -64,6 +60,10 @@
             data: this.list
           }]
         })
+      },
+      getIncreaseData() {
+        const startTime = moment().add(-3, 'seconds').format(timerFormat)
+        this.getData(startTime)
       }
     }
   }

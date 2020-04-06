@@ -14,10 +14,19 @@
         />
       </el-col>
       <el-col :span="12" style="text-align: left;padding-left: 20px">
+        <h5>桥梁图片:</h5>
+        <br />
+        <el-image
+          style="width: 460px;height: 300px"
+          :src="imgUrl"
+          fit="cover"
+          :preview-src-list="[imgUrl]"
+        >
+        </el-image>
         <h5>测点布设图:</h5>
         <br />
         <el-image
-          style="width: 620px;height: 500px"
+          style="width: 460px;height: 300px"
           :src="pointUrl"
           fit="cover"
           :preview-src-list="[pointUrl]"
@@ -43,12 +52,13 @@
       config.formColumns = config.formColumns.map(e => ({ ...e, disabled: true }))
       return {
         ...config,
-        pointUrl: null,
+        pointUrl: '',
+        imgUrl: ''
       }
     },
     methods: {
       afterGetItem(v) {
-        this.pointUrl = v.pointUrl;
+        this.pointUrl = v.pointUrl
       }
     }
   }

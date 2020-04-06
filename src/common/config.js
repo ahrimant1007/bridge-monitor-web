@@ -11,7 +11,7 @@ const dev = {
 }
 const prod = {
   // 生产环境
-  baseUrl: '/',
+  baseUrl: '/api/',
 }
 
 const config = { local, dev, prod }[NODE_ENV]

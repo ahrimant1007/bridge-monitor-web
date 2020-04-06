@@ -45,39 +45,39 @@
     }
   }
 </script>
-<style scoped lang="scss">
+<style scoped lang="less">
   .base-tree {
-    padding: 2vh;
-
+    height: 75vh;
+    overflow-y: auto;
     .list-item {
       margin: 4px 0;
       text-align: left;
-      color: #555;
+      color: #333;
       padding: 4px 12px;
       cursor: pointer;
       display: flex;
+      font-size: 14px;
       justify-content: space-between;
       line-height: 32px;
       background: rgba(255, 255, 255, .5);
-
       &.selected {
         color: white;
+        font-size: 14px;
+        font-weight: bold;
         background: rgba(0, 0, 0, .2);
-
         &:hover {
-          filter: invert(0%);
+          filter: invert(5%);
         }
       }
-
       &:hover {
-        filter: invert(20%);
+        filter: invert(10%);
       }
-
       .el-icon-caret-right {
         color: #ffd04b;
         font-size: 20px;
         line-height: 32px;
         font-weight: bold;
+        transform: translateX(10px);
       }
     }
   }
