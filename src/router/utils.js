@@ -1,5 +1,3 @@
-
-
 const modulesRootPath = 'views/main/modules'
 
 export const makeRouter = (module, fileName = 'index', meta = {}) => {

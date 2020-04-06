@@ -2,7 +2,7 @@
   <div class="no-auth">
     <div class="code">403</div>
     <div>您访问没有访问的权限</div>
-    <el-button style="margin: 10px" @click="$router.go(-1)">返回</el-button>
+    <el-button style="margin: 10px" @click="$router.push('/home')">返回</el-button>
   </div>
 </template>
 <style scoped>

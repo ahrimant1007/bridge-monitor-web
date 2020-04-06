@@ -35,6 +35,15 @@ class Service extends GlobalService {
    */
   getUserInfo = async (id) => {
     return this.post(`sys/user/detail/${id}`)
+    // return this.post(`userDetail`)
+  }
+
+  /**
+   * 查询用户下授权的菜单
+   * @returns {Promise<*>}
+   */
+  getMenus = async () => {
+    return this.post(`userMenus`)
   }
 
   /**

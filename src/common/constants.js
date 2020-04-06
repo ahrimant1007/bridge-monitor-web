@@ -1,4 +1,10 @@
-export const whiteList = ['/login']
+export const whiteList = [
+  '/login', '/home',
+  '/404', '/403',
+  '/main/system',
+  '/main/system/password',
+  '/main/system/detail',
+]
 
 export const APP_COLORS = {
   BLUE: '#007bff',
@@ -141,4 +147,6 @@ const modules = {
     ]
   },
 }
-export const moduleConfigs = modules;
+
+export const allModules = Object.values(modules)
+export const moduleConfigs = modules

@@ -59,6 +59,7 @@
     methods: {
       afterGetItem(v) {
         this.pointUrl = v.pointUrl
+        this.imgUrl = v.imgUrl
       }
     }
   }

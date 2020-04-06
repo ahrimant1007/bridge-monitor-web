@@ -27,14 +27,14 @@
           v-if="item.type === TYPE_ENUM.DATE"
           v-model="searchForm[item.value]"
           :type="item.dateType || 'date'"
-          clearable
+          :clearable="false"
           placeholder="选择日期"
           format="yyyy 年 MM 月 dd 日"
         ></el-date-picker>
         <el-date-picker
           v-if="item.type === TYPE_ENUM.DATE_RANGE"
           v-model="searchForm[item.value]"
-          clearable
+          :clearable="false"
           :type="item.dateType || 'daterange'"
           start-placeholder="开始日期"
           end-placeholder="结束日期"
@@ -82,7 +82,7 @@
         searchForm: {},
       }
     },
-    mounted() {
+    created() {
       this.initSearchForm()
     },
     methods: {

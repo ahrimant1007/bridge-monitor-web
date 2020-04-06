@@ -1,10 +1,11 @@
 import service from '@/services'
-import token from '@/utils/token';
+import token from '@/utils/token'
 
 const user = {
   state: {
     userInfo: {},
-    orgList: []
+    orgList: [],
+    menus: [],
   },
 
   mutations: {
@@ -13,6 +14,9 @@ const user = {
     },
     setOrgList: (state, orgList = []) => {
       state.orgList = orgList
+    },
+    setMenus: (state, menus = []) => {
+      state.menus = menus
     },
   },
   actions: {
@@ -25,6 +29,11 @@ const user = {
       commit('setUserInfo', userInfo)
       return userInfo
     },
+    async getPermissionList({ commit, state }) {
+      const menus = await service.getMenus()
+      commit('setMenus', menus)
+      return menus
+    }
   }
 }
 

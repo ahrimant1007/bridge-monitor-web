@@ -1,4 +1,4 @@
-import router from './maker/router';
-import './maker/permission';
+import router from './router';
+import './permission';
 
 export default router;

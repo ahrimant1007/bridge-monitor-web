@@ -2,6 +2,7 @@
   <div class="parameter">
     <c-searcher
       :options="searchColumns"
+      :value-form="defaultValueForm"
       @submitHandle="onSearch"
     />
     <c-table
@@ -16,6 +17,7 @@
   import { config } from './config'
   import CTable from '@/components/cc-table'
   import CSearcher from '@/components/cc-searcher'
+  import { getDefaultRangeTime } from '@/utils'
 
   export default {
     name: 'Warn',
@@ -24,12 +26,23 @@
       sensorId: {
         type: String,
         required: true,
-      }
+      },
     },
     data() {
+      const {
+        startTime, endTime,
+        startStrTime, endStrTime
+      } = getDefaultRangeTime()
       return {
         ...config,
-        searchForm: {},
+        searchForm: {
+          sensorId: this.sensorId,
+          startTime: startStrTime,
+          endTime: endStrTime,
+        },
+        defaultValueForm: {
+          _: [startTime, endTime]
+        },
       }
     },
     methods: {

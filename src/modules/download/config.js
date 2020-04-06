@@ -11,29 +11,39 @@ export const warnConfig = configMaker({
     downloadData: downloadService.downloadWarn,
   },
   columns: [
-    { value: 'sensorId', label: '传感器编号' },
-
-    { value: 'sensorNo', label: '传感器显示编号'},
+    { value: 'sensorNo', label: '传感器显示编号' },
     {
-      value: 'warningTime',
-      label: '报警时间',
-      render: (data, { property }) => moment(data[property]).format('YYYY-MM-DD HH:mm:ss'),
+      value: 'warningLevel',
+      label: '报警等级',
     },
     {
       value: 'warningValue',
       label: '报警值',
     },
     {
+      value: 'warningTime',
+      label: '报警时间',
+      render: (data, { property }) => moment(data[property]).format('YYYY-MM-DD HH:mm:ss'),
+    },
+    {
       value: 'warnLevel',
       label: '报警等级',
       type: TYPE_ENUM.SELECT,
       inSearch: true,
+      notTable: true,
       options: [
         { value: '橙色预警', label: '橙色预警' },
         { value: '黄色预警', label: '黄色预警' },
       ]
     },
-    { value: '_', label: '报警时间', inSearch: true, type: TYPE_ENUM.DATE_RANGE, dateType: 'datetimerange' },
+    {
+      value: '_',
+      label: '报警时间',
+      inSearch: true,
+      notTable: true,
+      type: TYPE_ENUM.DATE_RANGE,
+      dateType: 'datetimerange'
+    },
   ],
 })
 
@@ -44,20 +54,18 @@ export const effConfig = configMaker({
     downloadData: downloadService.downloadEff,
   },
   columns: [
-    { value: 'sensorId', label: '传感器编号' },
-    { value: 'sensorNo', label: '传感器显示编号'},
     {
-      value: 'warningTime',
-      label: '报警时间',
+      value: 'captureTime',
+      label: '采集时间',
       render: (data, { property }) => moment(data[property]).format('YYYY-MM-DD HH:mm:ss'),
     },
     {
-      value: 'warningValue',
-      label: '报警值',
+      value: 'captureValue',
+      label: '采集值',
     },
     {
       value: '_',
-      label: '报警时间',
+      label: '采集时间',
       notTable: true,
       inSearch: true,
       type: TYPE_ENUM.DATE_RANGE,

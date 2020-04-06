@@ -90,7 +90,9 @@ export default class {
           } else {
             // todo 根据接口设计修改
             const { code, data, msg } = payload
-            if (+code === 0) {
+            if (+code === 401) {
+              location.href = '/login'
+            } else if (+code === 0) {
               return resolve(data)
             } else {
               errorHandle(payload, msg)
@@ -100,7 +102,6 @@ export default class {
           errorHandle(payload, data)
         }
       }).catch(error => {
-        console.log('fetch-exception => ')
         errorHandle(error)
         reject(error)
       })

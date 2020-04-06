@@ -37,18 +37,25 @@
   import CTable from '@/components/cc-table'
   import CSearcher from '@/components/cc-searcher'
   import BridgeTree from '../monitor/tree'
+  import { getDefaultRangeTime } from '@/utils'
 
   export default {
     name: 'Download',
     components: { CSearcher, CTable, BridgeTree },
     data() {
+      const {
+        startTime, endTime,
+        startStrTime, endStrTime
+      } = getDefaultRangeTime()
       return {
         ...config,
         defaultValueForm: {
-          _: [new Date() - 60000, new Date()]
+          _: [startTime, endTime]
         },
         searchForm: {
           sensorId: '',
+          startTime: startStrTime,
+          endTime: endStrTime,
         },
       }
     },
@@ -57,7 +64,9 @@
         this.searchForm = { ...(this.searchForm || {}), ...form }
       },
       downloadData() {
-        this.service.downloadData(this.searchForm)
+        const model = { ...this.searchForm }
+        delete model._
+        this.service.downloadData(model)
       }
     }
   }

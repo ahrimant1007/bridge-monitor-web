@@ -24,12 +24,29 @@ export const config = configMaker({
       label: '报警等级',
       type: TYPE_ENUM.SELECT,
       inSearch: true,
+      notTable: true,
       options: [
         { value: '橙色预警', label: '橙色预警' },
         { value: '黄色预警', label: '黄色预警' },
       ]
     },
-    { value: '_', label: '报警时间', inSearch: true, type: TYPE_ENUM.DATE_RANGE, dateType: 'datetimerange' },
+    {
+      value: 'warningLevel',
+      label: '报警等级',
+      type: TYPE_ENUM.SELECT,
+      options: [
+        { value: '橙色预警', label: '橙色预警' },
+        { value: '黄色预警', label: '黄色预警' },
+      ]
+    },
+    {
+      value: '_',
+      label: '报警时间',
+      inSearch: true,
+      notTable: true,
+      type: TYPE_ENUM.DATE_RANGE,
+      dateType: 'datetimerange'
+    },
   ],
 })
 

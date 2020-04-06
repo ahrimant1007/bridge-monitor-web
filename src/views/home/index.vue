@@ -9,7 +9,7 @@
       <radar-charts />
     </div>
     <div class="router-path-container">
-      <div v-for="(item,index) in menu" :key="item.subTitle">
+      <div v-for="(item,index) in checkedPermissionMenus" :key="item.subTitle">
         <div @click="routeTo(item.path)">
           <route-card
             :class="'fade-in-right-d'+index"
@@ -28,7 +28,7 @@
   import { mapGetters } from 'vuex'
   import RouteCard from './components/RouteCard'
   import RadarCharts from './components/RadarCharts'
-  import { moduleConfigs } from '@/common/constants'
+  import { allModules } from '@/common/constants'
 
   export default {
     name: 'Home',
@@ -36,17 +36,29 @@
     data() {
       return {
         title: '智慧桥梁检测系统',
-        menu: moduleConfigs
+        menu: allModules
       }
     },
     computed: {
-      ...mapGetters(['userInfo']),
+      ...mapGetters(['userInfo', 'permissionMenus']),
       initFinished() {
-        return !!this.userInfo.id
+        return !!this.userInfo.id && !!this.permissionMenus.length
       },
+      checkedPermissionMenus() {
+        return allModules.filter(m =>
+          this.permissionMenus.find(pm => m.path.startsWith(pm.path))
+        )
+      }
     },
     created() {
-      this.$store.dispatch('getUserInfo')
+      this.$store.dispatch('getUserInfo').catch(e => {
+        console.log(123, e)
+        alert(123)
+      })
+      this.$store.dispatch('getPermissionList').catch(e => {
+        console.log(123, e)
+        alert(123)
+      })
     },
     methods: {
       routeTo(path) {

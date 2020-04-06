@@ -28,7 +28,7 @@
   import headerBar from '@/components/header-bar'
   import navMenu from '@/components/aside-menu'
   import breadcrumb from '@/components/breadcrumb'
-  import { moduleConfigs } from '@/common/constants'
+  import { allModules } from '@/common/constants'
 
   export default {
     name: 'MainLayout',
@@ -39,15 +39,17 @@
       }
     },
     computed: {
-      ...mapGetters(['userInfo']),
+      ...mapGetters(['userInfo', 'permissionMenus']),
       initFinished() {
         return !!this.userInfo.id
       },
       asideMenus() {
-        return Object.values(moduleConfigs).filter(e => !e.headerNav)
+        return allModules.filter(e =>
+          !e.headerNav && this.permissionMenus.find(pm => e.path.startsWith(pm.path))
+        )
       },
       headerMenus() {
-        return Object.values(moduleConfigs).filter(e => e.headerNav)
+        return allModules.filter(e => e.headerNav)
       }
     },
     created() {

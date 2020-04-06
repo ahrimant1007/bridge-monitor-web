@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 const getRequiredRole = (label) => ({ required: true, message: `请输入${label}`, trigger: ['blur', 'change'] })
 
 export const configMaker = config => {
@@ -16,5 +18,18 @@ export const configMaker = config => {
     searchColumns: columns.filter(e => e.inSearch),
     formColumns,
     form,
+  }
+}
+
+export const getDefaultRangeTime = (n = 1, type = 'hours', format = 'YYYY-MM-DD hh:mm:ss') => {
+  const now = moment().valueOf()
+  const before = moment().add(n, type).valueOf()
+  const startStr = moment(now).format(format)
+  const endStr = moment(before).format(format)
+  return {
+    startTime: before,
+    endTime: now,
+    startStrTime: startStr,
+    endStrTime: endStr,
   }
 }
