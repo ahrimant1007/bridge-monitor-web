@@ -3,6 +3,10 @@ import moment from 'moment'
 export const getLineOption = (title = '', data = [], color = '#17a2b8') => {
   return {
     color: color,
+    grid: {
+      left: 30,
+      right: 10,
+    },
     title: {
       text: title
     },
@@ -10,7 +14,7 @@ export const getLineOption = (title = '', data = [], color = '#17a2b8') => {
       trigger: 'axis',
       formatter: function (param) {
         const [time, value] = param[0].data
-        return ` ${moment(time).format('YYYY-MM-DD HH:mm:ss')} : ${value}  `;
+        return ` ${moment(time).format('YYYY-MM-DD HH:mm:ss')} : ${value}  `
       },
       axisPointer: {
         animation: false
@@ -41,6 +45,10 @@ export const getLineOption = (title = '', data = [], color = '#17a2b8') => {
 export const getLineZoomOption = (title = '', data = [], color = '#17a2b8') => {
   return {
     color: color,
+    grid: {
+      left: 40,
+      right: 20,
+    },
     title: {
       text: title
     },

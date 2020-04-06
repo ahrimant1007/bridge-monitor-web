@@ -92,6 +92,8 @@ export default class {
             const { code, data, msg } = payload
             if (+code === 401) {
               location.href = '/login'
+            } else if (+code === 403) {
+              location.href = '/403'
             } else if (+code === 0) {
               return resolve(data)
             } else {
