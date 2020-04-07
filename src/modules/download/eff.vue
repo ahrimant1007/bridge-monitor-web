@@ -67,7 +67,7 @@
       downloadData() {
         const model = { ...this.searchForm }
         delete model._
-        this.service.downloadData(this.searchForm)
+        this.service.downloadData(model)
       }
     }
   }

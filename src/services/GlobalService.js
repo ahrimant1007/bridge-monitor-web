@@ -9,13 +9,13 @@ const errorHandle = (resp, msg) => {
 }
 
 axios.defaults.withCredentials = true
-axios.interceptors.request.use(
-  req => req,
-  error => {
-    console.log(error)
-    return Promise.reject()
-  }
-)
+// axios.interceptors.request.use(
+//   req => req,
+//   error => {
+//     console.log(error)
+//     return Promise.reject()
+//   }
+// )
 
 export default class {
   defaultParams = {
@@ -85,20 +85,16 @@ export default class {
       axios(`${baseUrl}${path}`, params).then((res = {}) => {
         const { status, data: payload = {} } = res
         if (status >= 200 && status < 300) {
-          if (payload instanceof Blob) {
-            resolve(payload)
+          // todo 根据接口设计修改
+          const { code, data, msg } = payload
+          if (+code === 401) {
+            location.href = '/login'
+          } else if (+code === 403) {
+            location.href = '/403'
+          } else if (+code === 0) {
+            return resolve(data)
           } else {
-            // todo 根据接口设计修改
-            const { code, data, msg } = payload
-            if (+code === 401) {
-              location.href = '/login'
-            } else if (+code === 403) {
-              location.href = '/403'
-            } else if (+code === 0) {
-              return resolve(data)
-            } else {
-              errorHandle(payload, msg)
-            }
+            errorHandle(payload, msg)
           }
         } else {
           errorHandle(payload, data)
@@ -160,5 +156,39 @@ export default class {
    */
   sleep = time => {
     return new Promise((resolve) => setTimeout(resolve, time))
+  }
+
+  download(path, modal) {
+    axios({
+      method: 'post',
+      url: `${baseUrl}${path}`,
+      data: modal,
+      responseType: 'blob'
+    }).then(response => {
+      this._exportFile(response)
+    }).catch((error) => {
+      console.log(error)
+    })
+  }
+
+  _exportFile(result) {
+    const contentDisposition = result.headers['content-disposition']
+    const filename = decodeURI(contentDisposition.split('filename=')[1])
+    const blob = new Blob([result.data])
+    const url = window.URL.createObjectURL(blob)
+    if (window.navigator.msSaveBlob) {
+      try {
+        window.navigator.msSaveBlob(blob, filename)
+      } catch (e) {
+        console.log(e)
+      }
+    } else {
+      const link = document.createElement('a')
+      link.style.display = 'none'
+      link.href = url
+      link.setAttribute('download', filename)
+      document.body.appendChild(link)
+      link.click()
+    }
   }
 }

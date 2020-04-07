@@ -1,6 +1,9 @@
+import Jasypt from 'jasypt'
 import GlobalService from './GlobalService'
 
 let instance = null
+const jasypt = new Jasypt()
+jasypt.setPassword('bridgemonitor2020')
 
 /**
  * 调用业务相关api
@@ -26,7 +29,8 @@ class Service extends GlobalService {
    * @returns {Promise<*>}
    */
   login = async ({ username, password }) => {
-    return this.post(`login`, { userName: username, password })
+    return this.post(`login`, { userName: username, password: jasypt.encrypt((password)) })
+    // return this.post(`login`, { userName: username, password })
   }
 
   /**

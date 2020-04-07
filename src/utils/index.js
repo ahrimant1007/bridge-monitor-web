@@ -24,8 +24,8 @@ export const configMaker = config => {
 export const getDefaultRangeTime = (n = 1, type = 'hours', format = 'YYYY-MM-DD hh:mm:ss') => {
   const now = moment().valueOf()
   const before = moment().add(n, type).valueOf()
-  const startStr = moment(now).format(format)
-  const endStr = moment(before).format(format)
+  const startStr = moment(before).format(format)
+  const endStr = moment(now).format(format)
   return {
     startTime: before,
     endTime: now,

@@ -26,7 +26,7 @@ class Service extends GlobalService {
    * @returns {Promise<*>}
    */
   downloadWarn = async (modal) => {
-    return this.post(`${prefix}/warn`, modal, { responseType: 'arraybuffer' })
+    return this.download(`${prefix}/warn`, modal)
   }
 
   /**
@@ -34,7 +34,7 @@ class Service extends GlobalService {
    * @returns {Promise<*>}
    */
   downloadEff = async (modal) => {
-    return this.post(`${prefix}/eff`, modal, { responseType: 'arraybuffer' })
+    return this.download(`${prefix}/eff`, modal)
   }
 
   /**
