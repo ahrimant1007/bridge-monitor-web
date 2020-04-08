@@ -29,7 +29,7 @@ class Service extends GlobalService {
    * @returns {Promise<*>}
    */
   login = async ({ username, password }) => {
-    return this.post(`login`, { userName: username, password: jasypt.encrypt((password)) })
+    return this.post(`login`, { userName: username, password: jasypt.encrypt(password) })
     // return this.post(`login`, { userName: username, password })
   }
 
@@ -56,7 +56,12 @@ class Service extends GlobalService {
    * @returns {Promise<*>}
    */
   updatePassword = async (model) => {
-    return this.post(`modifyPasswd`, model)
+    const o = {
+      userName: model.userName,
+      oldPasswd: jasypt.encrypt(model.oldPasswd),
+      newPasswd: jasypt.encrypt(model.newPasswd),
+    }
+    return this.post(`modifyPasswd`, o)
   }
 }
 

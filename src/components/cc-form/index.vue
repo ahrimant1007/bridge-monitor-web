@@ -18,14 +18,12 @@
             v-if="column.type === TYPE_ENUM.INPUT || !column.type"
             v-model="model[column.value]"
             :disabled="column.disabled"
-            :placeholder="`请输入${column.label}`"
           ></el-input>
           <el-input
             v-if="column.type === TYPE_ENUM.NUMBER"
             v-model="model[column.value]"
             :disabled="column.disabled"
             type="number"
-            :placeholder="`请输入${column.label}`"
           ></el-input>
           <el-input
             v-if="column.type === TYPE_ENUM.TEXT_AREA"
@@ -33,14 +31,12 @@
             :disabled="column.disabled"
             :rows="3"
             type="textarea"
-            :placeholder="`请输入${column.label}`"
           ></el-input>
           <el-input
             v-if="column.type === TYPE_ENUM.PASSWORD"
             v-model="model[column.value]"
             :disabled="column.disabled"
             show-password
-            :placeholder="`请输入${column.label}`"
           ></el-input>
           <el-select
             v-if="column.type === TYPE_ENUM.SELECT"

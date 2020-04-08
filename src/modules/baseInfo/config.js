@@ -7,7 +7,7 @@ export const formConfig = configMaker({
   service,
   columns: [
     { value: 'name', label: '桥梁名称', inSearch: true, notTable: true, notForm: true, },
-    { value: 'bridgeNo', label: '桥梁编号', required: true },
+    // { value: 'bridgeNo', label: '桥梁编号', required: true },
     { value: 'bridgeName', label: '桥梁名称', required: true },
     { value: 'length', label: '桥梁全长', span: 12, notTable: true },
     { value: 'width', label: '桥梁宽度', span: 12, notTable: true },
