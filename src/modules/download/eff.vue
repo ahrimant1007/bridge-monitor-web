@@ -39,7 +39,6 @@
   import BridgeTree from '../monitor/tree'
   import { getDefaultRangeTime } from '@/utils'
 
-
   export default {
     name: 'Download',
     components: { CSearcher, CTable, BridgeTree },

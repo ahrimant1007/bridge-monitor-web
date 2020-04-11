@@ -35,12 +35,39 @@
     top: 100px;
     left: 100px;
     background: rgba(0, 0, 0, .4);
+
     > span {
       background: linear-gradient(0deg, rgba(113, 143, 155, 1) 16.943359375%, rgba(255, 255, 255, 1) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
     padding: 30px 40px;
     font-size: 60px;
+  }
+
+  .logout {
+    display: flex;
+    background: rgba(0, 0, 0, .4);
+    padding: 6px 10px;
+    color: white;
+    font-size: 18px;
+    position: absolute;
+    left: 100px;
+    bottom: 50px;
+    line-height: 30px;
+    cursor: pointer;
+    filter: invert(20%);
+    i {
+      font-size: 28px;
+      margin-right: 10px;
+    }
+
+    &:hover {
+      filter: invert(0);
+      i {
+        transform: scale(1.2);
+      }
+    }
   }
 }

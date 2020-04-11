@@ -22,6 +22,10 @@
         </div>
       </div>
     </div>
+    <div class="logout" @click="routeTo('/login')">
+      <el-icon class="el-icon-s-fold" />
+      <div>用户退出</div>
+    </div>
   </div>
 </template>
 <script>
@@ -46,18 +50,15 @@
       },
       checkedPermissionMenus() {
         return allModules.filter(m =>
-          this.permissionMenus.find(pm => m.path.startsWith(pm.path))
+          this.permissionMenus.find(pm => m.path.startsWith(pm.path) && !m.headerNav)
         )
       }
     },
     created() {
       this.$store.dispatch('getUserInfo').catch(e => {
-        console.log(123, e)
-        alert(123)
+
       })
       this.$store.dispatch('getPermissionList').catch(e => {
-        console.log(123, e)
-        alert(123)
       })
     },
     methods: {

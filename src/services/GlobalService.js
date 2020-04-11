@@ -164,6 +164,7 @@ export default class {
       url: `${baseUrl}${path}`,
       data: modal,
       responseType: 'blob'
+      // responseType: 'arraybuffer'
     }).then(response => {
       this._exportFile(response)
     }).catch((error) => {
@@ -174,7 +175,7 @@ export default class {
   _exportFile(result) {
     const contentDisposition = result.headers['content-disposition']
     const filename = decodeURI(contentDisposition.split('filename=')[1])
-    const blob = new Blob([result.data])
+    const blob = new Blob([result.data], { type: 'application/vnd.ms-excel' })
     const url = window.URL.createObjectURL(blob)
     if (window.navigator.msSaveBlob) {
       try {
