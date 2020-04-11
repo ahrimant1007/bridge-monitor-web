@@ -1,10 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import defaultRouter from './default'
-// import { moduleConfigs } from '@/common/constants'
-// import { makeRouter} from '@/router/maker/utils'
-// const moduleRoutes = Object.values(moduleConfigs).map(module => makeRouter(module));
-
 import moduleRoutes from './modules';
 
 Vue.use(VueRouter)

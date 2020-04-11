@@ -139,6 +139,7 @@ export default [
     'path': '/main/download',
     'name': '数据下载',
     'meta': { 'title': '数据下载' },
+    'redirect': '/main/download/warn',
     'component': _import('modules/download/index'),
     'children': [{
       'path': '/main/download/warn',
