@@ -26,6 +26,7 @@
       const el = document.getElementById('chart-wrapper')
       this.chart = echarts.init(el)
       this.chart.setOption(getLineOption('实时曲线', []))
+
       const startTime = moment().add(-10, 'minutes').format(timerFormat)
       this.getData(startTime, true)
       this.timer = setInterval(this.getIncreaseData, 3000)

@@ -5,7 +5,7 @@ import { Message } from 'element-ui'
 const { baseUrl } = config
 
 const errorHandle = (resp, msg) => {
-  Message.error(msg || '未知错误')
+  Message.error(msg || '出现错误，请检查您的网络是否正常，如有问题请联系管理员。')
 }
 
 axios.defaults.withCredentials = true
