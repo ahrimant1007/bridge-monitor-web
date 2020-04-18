@@ -1,5 +1,5 @@
 <template>
-  <el-card class="cc-bar-container" body-style="display:flex;width:100%;padding: 20px 40px">
+  <el-card class="cc-bar-container" body-style="display:flex;width:100%;padding: 10px">
     <div v-for="(item,idx) in options" :key="idx" class="searcher">
       <div class="label">{{ item.label }} :</div>
       <div class="searcher-item">
@@ -125,7 +125,7 @@
   .el-card.cc-bar-container {
     line-height: 100%;
     width: 100%;
-    min-width: 1024px;
+    /*min-width: 1024px;*/
     display: flex;
     .el-card__body {
       display: flex;
@@ -133,7 +133,7 @@
     }
     .searcher {
       display: flex;
-      margin: 6px 12px;
+      margin: 6px 6px;
       .label {
         white-space: nowrap;
         text-align: right;
@@ -144,11 +144,13 @@
         font-weight: bold;
       }
       .searcher-item {
-        min-width: 230px;
+        min-width: 70px;
       }
     }
     .submit-btn {
       text-align: center;
+      display: flex;
+      flex-wrap: nowrap;
     }
   }
 </style>

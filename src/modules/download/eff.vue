@@ -6,29 +6,27 @@
       </el-card>
     </el-aside>
     <el-main v-if="searchForm.sensorId">
-      <el-card>
-        <c-searcher
-          :options="searchColumns"
-          :value-form="defaultValueForm"
-          @submitHandle="onSearch"
-        >
-          <template #button>
-            <el-button
-              type="success"
-              class="download-btn"
-              icon="el-icon-download"
-              @click="downloadData"
-            >数据下载
-            </el-button>
-          </template>
-        </c-searcher>
-        <c-table
-          :columns="tableColumns"
-          :frontend-url="frontendUrl"
-          :service="service"
-          :search-form="searchForm"
-        />
-      </el-card>
+      <c-searcher
+        :options="searchColumns"
+        :value-form="defaultValueForm"
+        @submitHandle="onSearch"
+      >
+        <template #button>
+          <el-button
+            type="success"
+            class="download-btn"
+            icon="el-icon-download"
+            @click="downloadData"
+          >下载
+          </el-button>
+        </template>
+      </c-searcher>
+      <c-table
+        :columns="tableColumns"
+        :frontend-url="frontendUrl"
+        :service="service"
+        :search-form="searchForm"
+      />
     </el-main>
   </el-container>
 </template>

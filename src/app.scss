@@ -27,6 +27,7 @@
   margin: 0 20px;
   overflow-y: auto;
 }
+
 .el-aside {
   padding: 20px;
 }
@@ -34,6 +35,38 @@
 .form-page {
   width: 800px;
   padding: 40px;
-  margin: 40px ;
+  margin: 40px;
   text-align: center;
+}
+
+.el-date-editor--datetimerange.el-input,
+.el-date-editor--datetimerange.el-input__inner {
+  width: 370px;
+}
+.el-card {
+  .el-card__body {
+    padding: 10px;
+  }
+}
+.search-flex {
+  .el-card {
+    .el-card__body {
+      display: flex;
+    }
+  }
+}
+#chart-wrapper {
+  width: 100%;
+  min-height: 300px;
+  height: 58vh;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 6px;
+  background-color: #999;
 }

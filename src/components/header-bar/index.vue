@@ -104,7 +104,7 @@
   }
   .info {
     font-size: 14px;
-    width: 240px;
+    width: 255px;
     color: #eee;
     display: flex;
     justify-content: space-between;

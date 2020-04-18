@@ -56,11 +56,11 @@
 </script>
 
 <style scoped lang="scss">
-  $w: 360px;
+  $w: 330px;
   .el-card {
     color: #333;
     width: $w;
-    height: 140px;
+    height: 120px;
     cursor: pointer;
     border: none;
     margin: 20px 10px ;

@@ -1,5 +1,7 @@
 <template>
-  <div id="chart-wrapper" />
+  <el-card>
+    <div id="chart-wrapper" />
+  </el-card>
 </template>
 <script>
   import echarts from 'echarts'
@@ -15,6 +17,10 @@
       sensorId: {
         type: String,
         required: true,
+      },
+      detail: {
+        type: Object,
+        default: () => ({}),
       }
     },
     data() {
@@ -26,7 +32,17 @@
     mounted() {
       const el = document.getElementById('chart-wrapper')
       this.chart = echarts.init(el)
-      this.chart.setOption(getLineOption('实时车辆', [], APP_COLORS.BLUE))
+      const { sensorShowNo, orangeWarningValue, yellowWarningValue } = this.detail
+      const opt = getLineOption(
+        '实时车辆',
+        [],
+        APP_COLORS.BLUE,
+        sensorShowNo,
+        orangeWarningValue,
+        yellowWarningValue,
+        '(mm)',
+      )
+      this.chart.setOption(opt)
       const startTime = moment().add(-1, 'hours').format(timerFormat)
       this.getData(startTime, true)
       this.timer = setInterval(this.getIncreaseData, 6000)
@@ -69,8 +85,4 @@
   }
 </script>
 <style scoped>
-  #chart-wrapper {
-    width: 100%;
-    height: 74vh;
-  }
 </style>

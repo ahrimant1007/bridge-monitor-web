@@ -1,5 +1,5 @@
 <template>
-  <el-card class="cc-table" body-style="width:100%;padding:40px">
+  <el-card class="cc-table" body-style="width:100%;padding:20px">
     <div v-if="hasAddAction" class="add-section">
       <el-button
         icon="el-icon-plus"
@@ -16,7 +16,6 @@
       :min-height="height"
       element-loading-text="拼命加载中..."
       style="width: 100%"
-      :height="height"
       :max-height="800"
     >
       <el-table-column

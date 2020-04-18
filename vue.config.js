@@ -6,7 +6,7 @@ module.exports = {
   },
   productionSourceMap: false,
   devServer: {
-    port: 3000,
+    port: 5000,
     proxy: {
       '/api': {
         target: 'http://localhost:18080/',
@@ -14,7 +14,7 @@ module.exports = {
         pathRewrite: {
           '/api': ''
         }
-      }
+      },
     }
   }
 };

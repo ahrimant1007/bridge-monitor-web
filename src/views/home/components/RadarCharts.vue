@@ -87,7 +87,7 @@
 
 <style scoped>
   .home-radar-chart {
-    width: 360px;
-    height: 300px;
+    width: 270px;
+    height: 210px;
   }
 </style>

@@ -7,10 +7,12 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, .1);
   position: relative;
-  min-width: 1700px;
+  min-width: 1280px;
   overflow: auto;
+  color: #333;
   .el-header {
     //background-color: rgba(10, 50, 90, 0.8);
+    width: 100%;
     background-color: rgba(0, 0, 0, .8);
     color: #333;
     text-align: center;

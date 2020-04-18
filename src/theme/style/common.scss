@@ -18,8 +18,8 @@ ul, dl, dt, dd, li, a, p, h1, h2, h3, h4, h5, h6, i, b, textarea, button, input,
 
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
 ::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+  width: 6px;
+  height: 5px;
   background-color: #F5F5F5;
 }
 
@@ -27,7 +27,7 @@ ul, dl, dt, dd, li, a, p, h1, h2, h3, h4, h5, h6, i, b, textarea, button, input,
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0);
   border-radius: 10px;
-  background-color: #F5F5F5;
+  background-color: #000;
 }
 
 /*定义滑块 内阴影+圆角*/
