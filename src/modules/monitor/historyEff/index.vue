@@ -33,7 +33,7 @@
   import echarts from 'echarts'
   import moment from 'moment'
   import service from '@/services/modules/monitor'
-  import { APP_COLORS } from '@/common/constants'
+  // import { APP_COLORS } from '@/common/constants'
   import { getLineZoomOption } from '../chartOptions'
 
   const timerFormat = 'YYYY-MM-DD HH:mm:ss'
@@ -83,7 +83,7 @@
       const opt = getLineZoomOption(
         '车辆历史',
         [],
-        APP_COLORS.GREEN,
+        undefined,
         sensorShowNo,
         orangeWarningValue,
         yellowWarningValue,

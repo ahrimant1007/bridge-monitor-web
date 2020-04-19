@@ -81,9 +81,29 @@ class Service extends GlobalService {
    * @param endTime 截止时间
    * @returns {Promise<*>}
    */
-  realTimeCurve = async ({ sensorId, startTime, endTime }) => {
-    const body = { sensorId, startTime, endTime }
-    return this.post(`${prefix}/realTimeCurve`, body)
+  // realTimeCurve = async ({ sensorId, startTime, endTime }) => {
+  //   const body = { sensorId, startTime, endTime }
+  //   return this.post(`${prefix}/realTimeCurve`, body)
+  // }
+
+ /**
+   * 实时曲线 - 全量
+   * @param sensorId 传感器ID
+   * @returns {Promise<*>}
+   */
+  realTimeCurveAll = async ({ sensorId }) => {
+    // const body = { sensorId }
+    return this.post(`${prefix}/realTimeCurveAll/${sensorId}`)
+  }
+
+  /**
+   * 实时曲线 - 增量
+   * @param sensorId 传感器ID
+   * @returns {Promise<*>}
+   */
+  realTimeCurveStep = async ({ sensorId }) => {
+    // const body = { sensorId }
+    return this.post(`${prefix}/realTimeCurveStep/${sensorId}`)
   }
 
   /**
@@ -93,9 +113,31 @@ class Service extends GlobalService {
    * @param endTime
    * @returns {Promise<*>}
    */
-  realTimeCurveEff = async ({ sensorId, startTime, endTime }) => {
-    const body = { sensorId, startTime, endTime }
-    return this.post(`${prefix}/realTimeCurveEff`, body)
+  // realTimeCurveEff = async ({ sensorId, startTime, endTime }) => {
+  //   const body = { sensorId, startTime, endTime }
+  //   return this.post(`${prefix}/realTimeCurveEff`, body)
+  // }
+
+   /**
+   * 车辆效应 - 全量
+   * @param sensorId
+   * @param startTime
+   * @param endTime
+   * @returns {Promise<*>}
+   */
+  realTimeCurveEffAll = async ({ sensorId }) => {
+    return this.post(`${prefix}/realTimeCurveEffAll/${sensorId}`)
+  }
+
+   /**
+   * 车辆效应 - 增量
+   * @param sensorId
+   * @param startTime
+   * @param endTime
+   * @returns {Promise<*>}
+   */
+  realTimeCurveEffStep = async ({ sensorId }) => {
+    return this.post(`${prefix}/realTimeCurveEffStep/${sensorId}`)
   }
 
   /**

@@ -1,8 +1,18 @@
 import moment from 'moment'
 
-const textStyle = {
+const titleTextStyle = {
   fontFamily: '微软雅黑',
   fontSize: 16,
+  color: '#606266'
+}
+const yTextStyle = {
+  fontFamily: '宋体',
+  fontSize: 14,
+  color: '#000'
+}
+const xTextStyle = {
+  fontFamily: '微软雅黑',
+  fontSize: 20,
   color: '#3E576F'
 }
 // todo 1:增加传感器类型 （头部标题显示）
@@ -20,13 +30,13 @@ export const getLineOption = (
   return {
     color: color,
     grid: {
-      left: 80,
+      left: 70,
       right: 20,
     },
     title: {
-      text: '传感器编号：' + xName + (unit ? ('  单位：' + unit) : ''),
+      text: title,
       left: 'center',
-      textStyle,
+      textStyle: titleTextStyle
     },
     tooltip: {
       trigger: 'axis',
@@ -44,11 +54,15 @@ export const getLineOption = (
         show: false
       },
       axisLine: {
-        show: true
+        show: false
       },
       axisTick: {
         show: false
       },
+      name: '传感器编号：' + xName,
+      nameLocation: 'center',
+      nameGap: 40,
+      nameTextStyle: xTextStyle
     },
     yAxis: {
       type: 'value',
@@ -70,7 +84,11 @@ export const getLineOption = (
       max: function (value) {
         const v = Math.ceil(value.max + Math.abs(value.min * 0.1))
         return Math.max(v, Math.round(markLineOrangeValue + 1), markLineYellowValue)
-      }
+      },
+      name: '单位：' + unit,
+      nameLocation: 'center',
+      nameGap: 50,
+      nameTextStyle: yTextStyle
     },
     series: [{
       type: 'line',
@@ -89,15 +107,17 @@ export const getLineOption = (
             yAxis: markLineOrangeValue,
             lineStyle: {
               type: 'solid',
-              color: 'orange'
+              width: 1,
+              color: '#FF0000'
             }
           },
           {
             name: '黄色预警',
             yAxis: markLineYellowValue,
             lineStyle: {
-              type: 'solid',
-              color: 'yellow'
+              type: 'dotted',
+              width: 1,
+              color: '#FF8000'
             }
           },
         ]
@@ -118,13 +138,13 @@ export const getLineZoomOption = (
   return {
     color: color,
     grid: {
-      left: 40,
+      left: 70,
       right: 20,
     },
     title: {
-      text: '传感器编号：' + xName + (unit ? ('  单位：' + unit) : ''),
+      text: '传感器编号：' + xName,
       left: 'center',
-      textStyle,
+      textStyle: titleTextStyle,
     },
     tooltip: {
       trigger: 'axis',
@@ -170,7 +190,12 @@ export const getLineZoomOption = (
       max: function (value) {
         const v = Math.ceil(value.max + Math.abs(value.min * 0.1))
         return Math.max(v, Math.round(markLineOrangeValue + 1), markLineYellowValue)
-      }
+      },
+      axisLine: { show: true },
+      name: '单位：' + unit,
+      nameLocation: 'center',
+      nameGap: 50,
+      nameTextStyle: yTextStyle
     },
     series: [{
       type: 'line',
@@ -187,15 +212,17 @@ export const getLineZoomOption = (
             yAxis: markLineOrangeValue,
             lineStyle: {
               type: 'solid',
-              color: 'orange'
+              width: 1,
+              color: '#FF0000'
             }
           },
           {
             name: '黄色预警',
             yAxis: markLineYellowValue,
             lineStyle: {
-              type: 'solid',
-              color: 'yellow'
+              type: 'dotted',
+              width: 1,
+              color: '#FF8000'
             }
           },
         ]
