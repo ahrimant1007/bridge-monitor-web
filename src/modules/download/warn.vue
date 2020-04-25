@@ -7,6 +7,7 @@
     </el-aside>
     <el-main v-if="searchForm.sensorId">
       <c-searcher
+        :key="searchForm.sensorId"
         :options="searchColumns"
         :value-form="defaultValueForm"
         @submitHandle="onSearch"
@@ -22,6 +23,7 @@
         </template>
       </c-searcher>
       <c-table
+        :key="searchForm.sensorId"
         :columns="tableColumns"
         :frontend-url="frontendUrl"
         :service="service"

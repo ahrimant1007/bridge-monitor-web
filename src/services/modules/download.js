@@ -1,4 +1,5 @@
 import GlobalService from '../GlobalService'
+import config from '@/common/config'
 
 let instance = null
 
@@ -26,7 +27,8 @@ class Service extends GlobalService {
    * @returns {Promise<*>}
    */
   downloadWarn = async (modal) => {
-    return this.download(`${prefix}/warn`, modal)
+    const query = this.o2query(modal)
+    location.href = `${config.baseUrl}${prefix}/warn?${query}`
   }
 
   /**
@@ -34,7 +36,8 @@ class Service extends GlobalService {
    * @returns {Promise<*>}
    */
   downloadEff = async (modal) => {
-    return this.download(`${prefix}/eff`, modal)
+    const query = this.o2query(modal)
+    location.href = `${config.baseUrl}${prefix}/eff?${query}`
   }
 
   /**

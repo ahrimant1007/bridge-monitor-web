@@ -79,11 +79,19 @@ export const getLineOption = (
       scale: true,
       min: function (value) {
         const v = Math.floor(value.min - Math.abs(value.min * 0.1))
-        return Math.min(v, Math.round(markLineOrangeValue - 1), markLineYellowValue)
+        if (!markLineOrangeValue && !markLineYellowValue) {
+          return v
+        } else {
+          return Math.min(v, Math.round(markLineOrangeValue - 1), markLineYellowValue)
+        }
       },
       max: function (value) {
         const v = Math.ceil(value.max + Math.abs(value.min * 0.1))
-        return Math.max(v, Math.round(markLineOrangeValue + 1), markLineYellowValue)
+        if (!markLineOrangeValue && !markLineYellowValue) {
+          return v
+        } else {
+          return Math.max(v, Math.round(markLineOrangeValue + 1), markLineYellowValue)
+        }
       },
       name: '单位：' + unit,
       nameLocation: 'center',
@@ -97,7 +105,7 @@ export const getLineOption = (
       smooth: false,
       symbol: 'rect',
       symbolSize: 1,
-      markLine: markLineOrangeValue ? {
+      markLine: !!markLineOrangeValue ? {
         itemStyle: {
           normal: { label: { show: true, position: 'left' } }
         },
