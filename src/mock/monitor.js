@@ -206,7 +206,7 @@ const bridgeSensors = {
       'sensorNo': '00010001', // 传感器编号
       'sensorShowNo': 'N-1-2/4', // 传感器显示编号
       'captureFrequency': 25, // 频率
-      'yellowWarningValue': 1.2, // 黄色预警值
+      'yellowWarningValue': 1.2, // 红色预警值
       'orangeWarningValue': 3.5 // 橙色预警值
     },
   ],

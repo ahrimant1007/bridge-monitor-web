@@ -39,7 +39,7 @@ module.exports = {
         filename: '[path].gz[query]',
         algorithm: 'gzip',
         test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
-        threshold: 1024,
+        threshold: 5120,
         minRatio: 0.8
       }),
       new webpack.optimize.LimitChunkCountPlugin({

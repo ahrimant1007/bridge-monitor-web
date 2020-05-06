@@ -40,7 +40,7 @@
         sensorShowNo,
         orangeWarningValue,
         yellowWarningValue,
-        '(mm)',
+        '(m/s2)',
       )
       this.chart.setOption(opt)
       // const startTime = moment().add(-1, 'hours').format(timerFormat)

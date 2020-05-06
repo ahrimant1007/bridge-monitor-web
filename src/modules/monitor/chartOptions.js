@@ -77,22 +77,24 @@ export const getLineOption = (
         show: false
       },
       scale: true,
-      min: function (value) {
+      min: data && data.length ? function (value) {
         const v = Math.floor(value.min - Math.abs(value.min * 0.1))
         if (!markLineOrangeValue && !markLineYellowValue) {
+          console.log('min', v, value.min)
           return v
         } else {
           return Math.min(v, Math.round(markLineOrangeValue - 1), markLineYellowValue)
         }
-      },
-      max: function (value) {
-        const v = Math.ceil(value.max + Math.abs(value.min * 0.1))
+      } : undefined,
+      max: data && data.length ? function (value) {
+        const v = Math.ceil(value.max + Math.abs(value.max * 0.1))
         if (!markLineOrangeValue && !markLineYellowValue) {
+          console.log('min', v, value.max)
           return v
         } else {
           return Math.max(v, Math.round(markLineOrangeValue + 1), markLineYellowValue)
         }
-      },
+      } : undefined,
       name: '单位：' + unit,
       nameLocation: 'center',
       nameGap: 50,
@@ -105,7 +107,7 @@ export const getLineOption = (
       smooth: false,
       symbol: 'rect',
       symbolSize: 1,
-      markLine: !!markLineOrangeValue ? {
+      markLine: markLineOrangeValue ? {
         itemStyle: {
           normal: { label: { show: true, position: 'left' } }
         },
@@ -116,16 +118,16 @@ export const getLineOption = (
             lineStyle: {
               type: 'solid',
               width: 1,
-              color: '#FF0000'
+              color: '#FF8000'
             }
           },
           {
-            name: '黄色预警',
+            name: '红色预警',
             yAxis: markLineYellowValue,
             lineStyle: {
               type: 'dotted',
               width: 1,
-              color: '#FF8000'
+              color: '#FF0000'
             }
           },
         ]
@@ -191,14 +193,14 @@ export const getLineZoomOption = (
         show: false
       },
       scale: true,
-      min: function (value) {
+      min: data && data.length ? function (value) {
         const v = Math.floor(value.min - Math.abs(value.min * 0.1))
         return Math.min(v, Math.round(markLineOrangeValue - 1), markLineYellowValue)
-      },
-      max: function (value) {
+      } : undefined,
+      max: data && data.length ? function (value) {
         const v = Math.ceil(value.max + Math.abs(value.min * 0.1))
         return Math.max(v, Math.round(markLineOrangeValue + 1), markLineYellowValue)
-      },
+      } : undefined,
       axisLine: { show: true },
       name: '单位：' + unit,
       nameLocation: 'center',
@@ -221,16 +223,16 @@ export const getLineZoomOption = (
             lineStyle: {
               type: 'solid',
               width: 1,
-              color: '#FF0000'
+              color: '#FF8000'
             }
           },
           {
-            name: '黄色预警',
+            name: '红色预警',
             yAxis: markLineYellowValue,
             lineStyle: {
               type: 'dotted',
               width: 1,
-              color: '#FF8000'
+              color: '#FF0000'
             }
           },
         ]

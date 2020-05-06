@@ -41,7 +41,7 @@ class Service extends GlobalService {
   /**
    * 安全预警
    * @param sensorNo
-   * @param warnLevel 预警等级，（橙色预警，黄色预警）
+   * @param warnLevel 预警等级，（橙色预警，红色预警）
    * @param startTime
    * @param endTime
    * @param currentPage

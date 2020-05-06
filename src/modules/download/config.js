@@ -33,7 +33,7 @@ export const warnConfig = configMaker({
       notTable: true,
       options: [
         { value: '橙色预警', label: '橙色预警' },
-        { value: '黄色预警', label: '黄色预警' },
+        { value: '红色预警', label: '红色预警' },
       ]
     },
     {

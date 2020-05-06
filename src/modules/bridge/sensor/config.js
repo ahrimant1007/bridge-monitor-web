@@ -10,7 +10,7 @@ export const config = configMaker({
     { value: 'sensorNo', label: '编号', required: true, disabled: true },
     { value: 'sensorShowNo', label: '显示编号', required: true },
     { value: 'captureFrequency', label: '频率' },
-    { value: 'yellowWarningValue', label: '黄色预警值', type: TYPE_ENUM.NUMBER },
+    { value: 'yellowWarningValue', label: '红色预警值', type: TYPE_ENUM.NUMBER },
     { value: 'orangeWarningValue', label: '橙色预警值', type: TYPE_ENUM.NUMBER },
   ],
   actions: ['edit'],

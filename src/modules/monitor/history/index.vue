@@ -86,7 +86,7 @@
         sensorShowNo,
         undefined,
         undefined,
-        '(mm)',
+        '(m/s2)',
       )
       this.chart.setOption(opt)
       const startTime = moment().add(-15, 'minute').format(timerFormat)

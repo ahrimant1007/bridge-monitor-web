@@ -29,7 +29,7 @@ export const config = configMaker({
       inSearch: true,
       options: [
         { value: '橙色预警', label: '橙色预警' },
-        { value: '黄色预警', label: '黄色预警' },
+        { value: '红色预警', label: '红色预警' },
       ]
     },
     { value: '_', label: '报警时间', inSearch: true, type: TYPE_ENUM.DATE_RANGE, dateType: 'datetimerange' },
