@@ -32,7 +32,7 @@
     mounted() {
       const el = document.getElementById('chart-wrapper')
       this.chart = echarts.init(el)
-      const { sensorShowNo, orangeWarningValue, yellowWarningValue } = this.detail
+      const { sensorShowNo, orangeWarningValue, yellowWarningValue, measurementUnit = '' } = this.detail
       const opt = getLineOption(
         '实时车辆',
         [],
@@ -40,7 +40,7 @@
         sensorShowNo,
         orangeWarningValue,
         yellowWarningValue,
-        '(m/s2)',
+        measurementUnit,
       )
       this.chart.setOption(opt)
       // const startTime = moment().add(-1, 'hours').format(timerFormat)

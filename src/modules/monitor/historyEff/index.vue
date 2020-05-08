@@ -79,7 +79,7 @@
       const el = document.getElementById('chart-wrapper')
       this.chart = echarts.init(el)
 
-      const { sensorShowNo, orangeWarningValue, yellowWarningValue } = this.detail
+      const { sensorShowNo, orangeWarningValue, yellowWarningValue, measurementUnit = ''} = this.detail
       const opt = getLineZoomOption(
         '车辆历史',
         [],
@@ -87,7 +87,7 @@
         sensorShowNo,
         orangeWarningValue,
         yellowWarningValue,
-        '(m/s2)',
+        measurementUnit,
       )
       this.chart.setOption(opt)
       const startTime = moment().add(-1, 'hours').format(timerFormat)

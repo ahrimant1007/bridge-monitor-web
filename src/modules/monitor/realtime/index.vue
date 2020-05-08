@@ -31,7 +31,7 @@
     mounted() {
       const el = document.getElementById('chart-wrapper')
       this.chart = echarts.init(el)
-      const { sensorShowNo } = this.detail
+      const { sensorShowNo, measurementUnit= '' } = this.detail
       const opt = getLineOption(
         '实时曲线',
         [],
@@ -39,7 +39,7 @@
         sensorShowNo,
         undefined,
         undefined,
-        '(m/s2)',
+        measurementUnit,
       )
       this.chart.setOption(opt)
       // const startTime = moment().add(-10, 'minutes').format(timerFormat)
